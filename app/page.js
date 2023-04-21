@@ -20,6 +20,41 @@ export default function Home() {
           </button>
         </div>
       </div>
+      <div className="mb-8">
+        <div className=" flex justify-center items-center m-5 mt-40 ">
+          <h1 className="font-bold text-5xl items-center">WHY PINDOWN ?</h1>
+        </div>
+        <div className="flex items-center justify-around">
+          <div className="p-4 m-2">
+            <img src="whycard2.png" alt="Girl in a jacket"/>
+          </div>
+          <div className="p-4 m-2">
+            <img  src="whycard2.png" alt="not found"/>
+          </div>
+          <div className="p-4 m-2">
+            <img src="whycard2.png" alt="not found"/>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div>
+          <div className="flex items-center justify-center m-5">
+            <h1 className="font-bold text-5xl items-center">HOW TO USE PINDOWN ?</h1>          
+          </div>
+          
+          <div className="flex items-center justify-around">
+            <div className="p-4 m-2">
+              <img src="whycard1.png" alt="Girl in a jacket"/>
+            </div>
+            <div className="p-4 m-2">
+              <img  src="whycard1.png" alt="not found"/>
+             </div>
+            <div className="p-4 m-2">
+              <img src="whycard1.png" alt="not found"/>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
   );
 }
