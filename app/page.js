@@ -1,12 +1,16 @@
-
+import { Montserrat } from "@next/font/google";
 export default function Home() {
   return (
     <main className=" justify-center text-white">
       <div className="flex border-white border-50 border-solid  items-center justify-center mt-16 m-2">
-        <h1 className="font-bold text-3xl sm:text-7xl">Powerful for developers.</h1>
+        <h1 className="font-bold text-3xl sm:text-7xl">
+          Powerful for developers.
+        </h1>
       </div>
       <div className="flex border-white border-50 border-solid  items-center justify-center m-1">
-        <h1 className="font-bold  text-2xl sm:text-5xl">Secure for everyone.</h1>
+        <h1 className="font-bold  text-2xl sm:text-5xl">
+          Secure for everyone.
+        </h1>
       </div>
       <div className="flex items-center justify-center mt-16">
         <div>
@@ -22,35 +26,39 @@ export default function Home() {
       </div>
       <div className="mb-8">
         <div className=" flex justify-center items-center m-5 mt-40 ">
-          <h1 className="font-bold  text-2xl sm:text-5xl items-center">WHY PINDOWN ?</h1>
+          <h1 className="font-bold  text-2xl sm:text-5xl items-center">
+            WHY PINDOWN ?
+          </h1>
         </div>
         <div className="sm:flex items-center sm:justify-around">
           <div className=" p-10 sm:p-4 m-2">
-            <img src="whycard2.png" alt="Girl in a jacket"/>
+            <img src="whycard2.png" alt="Girl in a jacket" />
           </div>
           <div className=" p-10 sm:p-4 m-2">
-            <img  src="whycard2.png" alt="not found"/>
+            <img src="whycard2.png" alt="not found" />
           </div>
           <div className="p-10 sm:p-4 m-2">
-            <img src="whycard2.png" alt="not found"/>
+            <img src="whycard2.png" alt="not found" />
           </div>
         </div>
       </div>
       <div>
         <div>
           <div className="flex items-center justify-center m-5">
-            <h1 className="font-bold  text-2xl  sm:text-5xl items-center">HOW TO USE PINDOWN ?</h1>          
+            <h1 className="font-bold  text-2xl  sm:text-5xl items-center">
+              HOW TO USE PINDOWN ?
+            </h1>
           </div>
-          
+
           <div className="sm:flex items-center sm:justify-around">
             <div className="p-10 sm:p-4 m-2">
-              <img src="whycard1.png" alt="Girl in a jacket"/>
+              <img src="whycard1.png" alt="Girl in a jacket" />
             </div>
             <div className="p-10 sm:p-4 m-2">
-              <img  src="whycard1.png" alt="not found"/>
-             </div>
+              <img src="whycard1.png" alt="not found" />
+            </div>
             <div className="p-10 sm:p-4 m-2">
-              <img src="whycard1.png" alt="not found"/>
+              <img src="whycard1.png" alt="not found" />
             </div>
           </div>
         </div>
