@@ -41,19 +41,19 @@ function Footer() {
           <h1>JOIN OUR TRIBE!!</h1>
         </div>
         <div className="flex m-10">
-          <div className="w-20 m-1 ">
+          <div className="w-20 m-1 bg-gra-one p-2 rounded-lg justify-items-center items-center flex place-items-center">
             <FontAwesomeIcon icon={faTwitter} style={{ color: "white" }} />
           </div>
-          <div className="w-20 m-1">
+          <div className="w-20 m-1 bg-gra-one p-2 rounded-lg justify-items-center items-center flex place-items-center">
             <FontAwesomeIcon icon={faReddit} style={{ color: "white" }} />
           </div>
-          <div className="w-20 m-1">
+          <div className="w-20 m-1 bg-gra-one p-2 rounded-lg justify-items-center items-center flex place-items-center">
             <FontAwesomeIcon icon={faYoutube} style={{ color: "white" }} />
           </div>
-          <div className="w-20 m-1">
+          <div className="w-20 m-1 bg-gra-one p-2 rounded-lg justify-items-center items-center flex place-items-center">
             <FontAwesomeIcon icon={faInstagram} style={{ color: "white" }} />
           </div>
-          <div className="w-20 m-1">
+          <div className="w-20 m-1 bg-gra-one p-2 rounded-lg justify-items-center items-center flex place-items-center">
             <FontAwesomeIcon icon={faDiscord} style={{ color: "white" }} />
           </div>
         </div>
