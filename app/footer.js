@@ -9,7 +9,7 @@ import {
 import { redirect } from "next/dist/server/api-utils";
 function Footer() {
   return (
-    <div className="flex border-4 border-white rounded-lg m-4 ">
+    <div className="flex border-4 border-white rounded-lg m-4 mt-32 ">
       <div className=" max-w-[45%]">
         <div className="text-white font-bold m-10 text-4xl">
           <h1>STAY SYNCED</h1>
