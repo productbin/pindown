@@ -29,7 +29,7 @@ function Footer() {
               name="email"
             />
           </div>
-          <div className=" flex ml-2 mb-10 mt-10  sm:mr-10">
+          <div className=" flex ml-10 mb-10 mt-10  sm:mr-10">
             <button className="rounded-lg text-white font-semibold border-4 justify-items-center  border-white p-4">
               Subscribe
             </button>
@@ -37,7 +37,7 @@ function Footer() {
         </div>
       </div>
       <div className="sm:min-w-[25%] sm:ml-64">
-        <div className="text-white font-bold m-10 text-4xl">
+        <div className="text-white font-bold m-10  text-2xl sm:text-4xl">
           <h1>JOIN OUR TRIBE!!</h1>
         </div>
         <div className="flex m-10">
