@@ -2,12 +2,6 @@
 import {useEffect,useState} from "react";
 import {useRouter} from "next/router"
 
-function loginRedirect (){
-   const router = useRouter();
-   router.push("/login"); 
-}
-
-
 function Navbar() {
   const [walletAddress,setWalletAddress] = useState("");
 
