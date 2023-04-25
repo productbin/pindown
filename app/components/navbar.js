@@ -1,6 +1,5 @@
 'use client'
 import {useEffect,useState} from "react";
-import {useRouter} from "next/router"
 
 function Navbar() {
   const [walletAddress,setWalletAddress] = useState("");
@@ -36,7 +35,11 @@ function Navbar() {
         if (accounts.length > 0) {
           setWalletAddress(accounts[0]);
           console.log(accounts[0]);
-        const rd =  loginRedirect();
+          const loginButton = document.getElementById("loginbtn");
+          loginButton.href = "/login"
+          loginButton.textContent = "Manage Certificates";
+
+        
         } else {
           console.log("Connect to MetaMask using the Connect button");
         }
@@ -73,15 +76,17 @@ function Navbar() {
                   About
                 </a>
                 <a
-                  href="login/"
-                  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  id="loginbtn"
+                  href="#"
+                  class=" Hidden text-gray-300 hover:bg-gray-700  hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
-                  login
+
                 </a>
               </div>
             </div>
             <div>
               <button
+                id ="connectbtn"
                 onClick={Connectwallet}
                 className="bg-white p-2 rounded-lg  hover:bg-gray-700 hover:text-white  "
               >
