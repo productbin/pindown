@@ -1,5 +1,4 @@
 import "../globals.css";
-
 export default function Upload() {
   return (
     <div className="m-8 border-4 border-white rounded-lg">

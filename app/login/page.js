@@ -2,7 +2,7 @@
 import "../globals.css";
 import { useRouter } from 'next/navigation';
 
-export default function login() {
+export default function Login() {
   const router = useRouter();
 
   function handleClick() {
