@@ -33,7 +33,7 @@ export default function Upload() {
     //webstorage();
   }*/
   return (
-    <div className="m-8 border-4 border-white rounded-lg bg-gra-one opacity-90 p-5 text-white">
+    <div className="m-8 border-4 border-white rounded-lg opacity-90 p-5 text-white">
       <div className="sm:flex sm:justify-evenly rounded-lg 	">
         <div>
           <div className="m-5">
