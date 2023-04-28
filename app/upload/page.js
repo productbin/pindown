@@ -33,43 +33,43 @@ export default function Upload() {
     //webstorage();
   }*/
   return (
-    <div className="m-8 border-4 border-white rounded-lg">
-      <div className="sm:flex sm:justify-evenly">
+    <div className="m-8 border-4 border-white rounded-lg bg-gra-one opacity-90 p-5 text-white">
+      <div className="sm:flex sm:justify-evenly rounded-lg 	">
         <div>
           <div className="m-5">
             <h1 className="font-semibold text-white p-2  m-1">Image Url</h1>
             <input
               id="imgurl"
-              className="rounded-lg p-2"
+              className="rounded-lg p-2 border-4 bg-transparent border-white"
               type="text"
               autofocus
             />
           </div>
           <div className="m-5">
             <h1 className="font-semibold text-white p-2 m-1">Attributes</h1>
-            <input id="attribute" className="rounded-lg p-2 " type="text" />
+            <input id="attribute" className="bg-transparent border-4 border-white rounded-lg p-2 " type="text" />
           </div>
           <div className="m-5">
             <h1 className="font-semibold text-white p-2 m-1">
               Number Of NFT's
             </h1>
-            <input id="nft" className="rounded-lg p-2" type="text" />
+            <input id="nft" className="rounded-lg p-2 bg-transparent border-white border-4" type="text" />
           </div>
         </div>
         <div>
-          <div className="m-5">
-            <h1 className="font-semibold min-w-[70%] text-white p-2 m-1">
+          <div className="m-5 rounded-lg  truncate break-words overflow-x-hidden  ">
+            <h1 className="font-semibold text-white p-2 m-1">
               Desciption
             </h1>
             <input
               id="desc"
-              className="rounded-lg min-w-[70%] h-64"
+              className="rounded-lg bg-transparent  object-fill  border-4 border-white h-64"
               type="text"
             />
           </div>
         </div>
       </div>
-      <div className="m-5  sm:flex justify-center space-x-4 ">
+      <div className="m-5  sm:flex justify-center space-x-4 text-gra-one ">
         <div>
           <button
             //onClick={getdata}
