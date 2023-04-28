@@ -34,7 +34,7 @@ export default function Upload() {
   }*/
   return (
     <div className="m-8 border-4 border-white rounded-lg">
-      <div className="flex justify-evenly">
+      <div className="sm:flex sm:justify-evenly">
         <div>
           <div className="m-5">
             <h1 className="font-semibold text-white p-2  m-1">Image Url</h1>
@@ -69,11 +69,11 @@ export default function Upload() {
           </div>
         </div>
       </div>
-      <div className="m-5  flex justify-center space-x-4 ">
+      <div className="m-5  sm:flex  space-x-4 ">
         <div>
           <button
             //onClick={getdata}
-            className="bg-white p-3 font-semibold mt-10 rounded-lg"
+            className="bg-white p-3 ml-8  font-semibold  mt-10 rounded-lg"
           >
             Upload Excel File
           </button>
@@ -82,7 +82,7 @@ export default function Upload() {
           {" "}
           <button
             //onClick={getdata}
-            className="bg-white p-3 font-semibold mt-10 rounded-lg"
+            className="bg-white p-3 ml-10 font-semibold  mt-10 rounded-lg"
           >
             Send NFT's
           </button>
