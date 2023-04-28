@@ -69,11 +69,11 @@ export default function Upload() {
           </div>
         </div>
       </div>
-      <div className="m-5  sm:flex  space-x-4 ">
+      <div className="m-5  sm:flex justify-center space-x-4 ">
         <div>
           <button
             //onClick={getdata}
-            className="bg-white p-3 ml-8  font-semibold  mt-10 rounded-lg"
+            className="bg-white p-3 sm:ml-8  font-semibold  mt-10 rounded-lg"
           >
             Upload Excel File
           </button>
@@ -82,7 +82,7 @@ export default function Upload() {
           {" "}
           <button
             //onClick={getdata}
-            className="bg-white p-3 ml-10 font-semibold  mt-10 rounded-lg"
+            className="bg-white p-3 sm:ml-10 font-semibold  mt-10 rounded-lg"
           >
             Send NFT's
           </button>
