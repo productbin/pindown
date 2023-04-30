@@ -53,32 +53,32 @@ function Navbar() {
   };
   return (
     <div className="p-8">
-      <nav class="border-white border-4 rounded-lg ">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex items-center justify-around   h-16">
+      <nav className="border-white border-4 rounded-lg ">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-around   h-16">
             <div class="flex items-center">
-              <a href="/" class="text-white font-bold text-xl">
+              <a href="/" className="text-white font-bold text-xl">
                 PINDOWN
               </a>
             </div>
-            <div class="hidden md:block min-w-[70%]">
-              <div class="flex items-center justify-center ">
+            <div className="hidden md:block min-w-[70%]">
+              <div className="flex items-center justify-center ">
                 <a
                   href="#"
-                  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Home
                 </a>
                 <a
                   href="#"
-                  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   About
                 </a>
                 <a
                   id="loginbtn"
                   href="#"
-                  class=" Hidden text-gray-300 hover:bg-gray-700  hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className=" Hidden text-gray-300 hover:bg-gray-700  hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
 
                 </a>

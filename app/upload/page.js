@@ -1,25 +1,15 @@
 "use client";
 import "../globals.css";
 import { Web3Storage } from "web3.storage";
-import { getFilesFromPath } from "web3.storage";
-const fs = require("fs");
-const path = require("path");
+import { File } from "web3.storage";
+
 
 export default function Upload() {
-  /*async function webstorage() {
-    const client = new Web3Storage(
-      "eyJzdWIiOiJkaWQ6ZXRocjoweDY4NjQyYUFiQkJhNzZGNjBhQTVjQmU0NEMxOGVBMTQ5MjNFNzRmMDAiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2ODI2NjA2ODE2MDQsIm5hbWUiOiJwaW5kb3duIn0.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.p076aRVi_qZvN_dDzDDBrDoq4qbTBMibn2ZULCMTw8Y"
-    );
-    const files = await getFilesFromPath("./data.txt");
-    const rootCid = await client.put(files);
+  async function webstorage(data) {
+    const client = new Web3Storage({ token: process.env.API_KEY});
+    console.log(client);
+    const rootCid = await client.put(data);
     console.log(rootCid);
-  }
-  function writedata(d) {
-    //const filepath = path.join(__dirname, 'data.txt');
-    fs.writeFile("data.txt", "Hello World", (err) => {
-      if (err) throw err;
-      console.log("The file has been saved!");
-    });
   }
 
   function getdata() {
@@ -27,11 +17,18 @@ export default function Upload() {
     const description = document.getElementById("desc").value;
     const attributes = document.getElementById("attribute").value;
     const nofnft = document.getElementById("nft").value;
-    let data = imageurl + " " + description + " " + attributes + " " + nofnft;
-    console.log(data);
-    writedata(data);
-    //webstorage();
-  }*/
+    let inputData = {
+      Image_Url: imageurl,
+      Description: description,
+      Attri: attributes,
+      nftno: nofnft,
+    };
+    const blob = new Blob([JSON.stringify(inputData)], {
+      type: "application/json",
+    });
+    const outputData = [new File([blob], "hello.json")];
+    webstorage(outputData);
+  }
   return (
     <div className="m-8 border-4 border-white rounded-lg opacity-90 p-5 text-white">
       <div className="sm:flex sm:justify-evenly rounded-lg 	">
@@ -42,25 +39,31 @@ export default function Upload() {
               id="imgurl"
               className="rounded-lg p-2 border-4 bg-transparent border-white"
               type="text"
-              autofocus
+              autoFocus
             />
           </div>
           <div className="m-5">
             <h1 className="font-semibold text-white p-2 m-1">Attributes</h1>
-            <input id="attribute" className="bg-transparent border-4 border-white rounded-lg p-2 " type="text" />
+            <input
+              id="attribute"
+              className="bg-transparent border-4 border-white rounded-lg p-2 "
+              type="text"
+            />
           </div>
           <div className="m-5">
             <h1 className="font-semibold text-white p-2 m-1">
               Number Of NFT's
             </h1>
-            <input id="nft" className="rounded-lg p-2 bg-transparent border-white border-4" type="text" />
+            <input
+              id="nft"
+              className="rounded-lg p-2 bg-transparent border-white border-4"
+              type="text"
+            />
           </div>
         </div>
         <div>
           <div className="m-5 rounded-lg  truncate break-words overflow-x-hidden  ">
-            <h1 className="font-semibold text-white p-2 m-1">
-              Desciption
-            </h1>
+            <h1 className="font-semibold text-white p-2 m-1">Desciption</h1>
             <input
               id="desc"
               className="rounded-lg bg-transparent  object-fill  border-4 border-white h-64"
@@ -81,7 +84,7 @@ export default function Upload() {
         <div>
           {" "}
           <button
-            //onClick={getdata}
+            onClick={getdata}
             className="bg-white p-3 sm:ml-10 font-semibold  mt-10 rounded-lg"
           >
             Send NFT's
