@@ -3,11 +3,13 @@ import "../globals.css";
 import { Web3Storage } from "web3.storage";
 import { File } from "web3.storage";
 
-
 export default function Upload() {
+
+  function getAccessToken() {
+    return process.env.NEXT_PUBLIC_API_KEY;
+  }
   async function webstorage(data) {
-    const client = new Web3Storage({ token: process.env.API_KEY});
-    console.log(client);
+    const client = new Web3Storage({ token: getAccessToken()});
     const rootCid = await client.put(data);
     console.log(rootCid);
   }
