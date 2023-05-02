@@ -14,8 +14,9 @@ export default function Upload() {
     const rootCid = await client.put(data);
     console.log(rootCid);
   }
-  function parsecsv(){
-    const theFile =Papa.parse(document.getElementById("upfile").files[0],
+
+  function startPapa(){
+      const theFile =Papa.parse(document.getElementById("upfile").files[0],
                 {
                   download: true,
                   header: true,
@@ -24,6 +25,18 @@ export default function Upload() {
                     console.log(results["data"]);
                   }
                 });
+  }
+
+
+  function parsecsv(){
+    const fileInput =document.getElementById("upfile");
+    fileInput.click();
+
+    fileInput.addEventListener('change', () => {
+      const uploadedFile = fileInput.files[0];
+      startPapa();
+    });
+
             }
 
   function getdata() {
@@ -86,13 +99,9 @@ export default function Upload() {
           </div>
         </div>
       </div>
-      <div className="m-5  sm:flex justify-evenly text-gra-one ">
-        <div className="">
-          <input type="file" id="upfile"  accept=".csv"
-                 className="space-x-8 bg-transperent p-3 border-4 border-white text-white sm:ml-8  font-semibold  mt-10 rounded-lg"/>
-        </div>
-        <div className="sm:flex">
-          <div>
+      <div className="m-5  sm:flex justify-around text-gra-one ">
+
+         <div>
             {" "}
             <button
               id = "upbtn"
@@ -102,6 +111,13 @@ export default function Upload() {
             </button>
           </div>
 
+        <div className="">
+          <input type="file" id="upfile"  accept=".csv"
+                 className="space-x-8 bg-transperent p-3 border-4 border-white text-white sm:ml-8  font-semibold  mt-10 rounded-lg"
+          hidden/>
+        </div>
+
+
           <div>
             {" "}
             <button
@@ -110,7 +126,7 @@ export default function Upload() {
               Send NFT's
             </button>
           </div>
-        </div>
+
       </div>
     </div>
   );
