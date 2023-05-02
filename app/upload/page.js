@@ -2,6 +2,7 @@
 import "../globals.css";
 import { Web3Storage } from "web3.storage";
 import { File } from "web3.storage";
+import Papa from 'papaparse';
 
 export default function Upload() {
 
@@ -13,6 +14,22 @@ export default function Upload() {
     const rootCid = await client.put(data);
     console.log(rootCid);
   }
+
+  function parsecsv(){
+    console.log("parsecsv Entered")
+    const theFile =Papa.parse(document.getElementById("upfile").files[0],
+                {
+                  download: true,
+                  header: true,
+                  skipEmptyLines: true,
+                  complete: function(results){
+                    console.log(results);
+                    console.log("function middle");
+
+                  }
+
+                });
+            }
 
   function getdata() {
     const imageurl = document.getElementById("imgurl").value;
@@ -76,12 +93,11 @@ export default function Upload() {
       </div>
       <div className="m-5  sm:flex justify-center space-x-4 text-gra-one ">
         <div>
-          <button
-            //onClick={getdata}
-            className="bg-white p-3 sm:ml-8  font-semibold  mt-10 rounded-lg"
-          >
-            Upload Excel File
-          </button>
+          <input type="file" id="upfile"  accept=".csv"
+                 className="bg-white p-2 sm:ml-8  font-semibold  mt-10 rounded-lg"
+          />
+
+          
         </div>
         <div>
           {" "}
@@ -90,6 +106,16 @@ export default function Upload() {
             className="bg-white p-3 sm:ml-10 font-semibold  mt-10 rounded-lg"
           >
             Send NFT's
+          </button>
+        </div>
+        <div>
+          {" "}
+          <button
+            id = "upbtn"
+            onClick={parsecsv}
+            className="bg-white p-3 sm:ml-10 font-semibold  mt-10 rounded-lg"
+          >
+            Upload File
           </button>
         </div>
       </div>

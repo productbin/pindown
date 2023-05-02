@@ -72,7 +72,7 @@ function Navbar() {
                 <a
                   href="#"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-          c      >
+                >
                   About
                 </a>
                 <a
@@ -80,7 +80,6 @@ function Navbar() {
                   href="#"
                   className=" Hidden text-gray-300 hover:bg-gray-700  hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
-
                 </a>
               </div>
             </div>
