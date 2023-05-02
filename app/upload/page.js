@@ -14,20 +14,15 @@ export default function Upload() {
     const rootCid = await client.put(data);
     console.log(rootCid);
   }
-
   function parsecsv(){
-    console.log("parsecsv Entered")
     const theFile =Papa.parse(document.getElementById("upfile").files[0],
                 {
                   download: true,
                   header: true,
                   skipEmptyLines: true,
                   complete: function(results){
-                    console.log(results);
-                    console.log("function middle");
-
+                    console.log(results["data"]);
                   }
-
                 });
             }
 
@@ -91,32 +86,30 @@ export default function Upload() {
           </div>
         </div>
       </div>
-      <div className="m-5  sm:flex justify-center space-x-4 text-gra-one ">
-        <div>
+      <div className="m-5  sm:flex justify-evenly text-gra-one ">
+        <div className="">
           <input type="file" id="upfile"  accept=".csv"
-                 className="bg-white p-2 sm:ml-8  font-semibold  mt-10 rounded-lg"
-          />
+                 className="space-x-8 bg-transperent p-3 border-4 border-white text-white sm:ml-8  font-semibold  mt-10 rounded-lg"/>
+        </div>
+        <div className="sm:flex">
+          <div>
+            {" "}
+            <button
+              id = "upbtn"
+              onClick={parsecsv}
+              className="bg-white p-3 sm:ml-10 font-semibold  mt-10 rounded-lg">
+              Upload File
+            </button>
+          </div>
 
-          
-        </div>
-        <div>
-          {" "}
-          <button
-            onClick={getdata}
-            className="bg-white p-3 sm:ml-10 font-semibold  mt-10 rounded-lg"
-          >
-            Send NFT's
-          </button>
-        </div>
-        <div>
-          {" "}
-          <button
-            id = "upbtn"
-            onClick={parsecsv}
-            className="bg-white p-3 sm:ml-10 font-semibold  mt-10 rounded-lg"
-          >
-            Upload File
-          </button>
+          <div>
+            {" "}
+            <button
+              onClick={getdata}
+              className="bg-white p-3 sm:ml-10 font-semibold  mt-10 rounded-lg">
+              Send NFT's
+            </button>
+          </div>
         </div>
       </div>
     </div>
