@@ -1,5 +1,6 @@
 'use client';
 import Profile from './Cwalllet';
+import CertificateButton from './certificate';
 import { useEffect, useState } from 'react';
 import { WagmiConfig, createClient, configureChains, mainnet } from 'wagmi';
 import { polygonMumbai } from 'wagmi/chains';
@@ -20,7 +21,6 @@ const client = createClient({
   provider,
   webSocketProvider,
 });
-
 
 function Navbar() {
   return (
@@ -48,15 +48,11 @@ function Navbar() {
                   >
                     About
                   </a>
-                  <a
-                    id="loginbtn"
-                    href="/login"
-                    className=" Hidden text-gray-300 hover:bg-gray-700  hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  ></a>
+                  <CertificateButton />
                 </div>
               </div>
               <div>
-                <Profile/>{' '}
+                <Profile />{' '}
               </div>
             </div>
           </div>
@@ -65,4 +61,4 @@ function Navbar() {
     </WagmiConfig>
   );
 }
-export default Navbar;
+export default   Navbar;
