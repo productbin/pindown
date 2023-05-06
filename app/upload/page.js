@@ -1,8 +1,12 @@
 'use client';
 import '../globals.css';
+import TheMint from './mintNFT';
 import { Web3Storage } from 'web3.storage';
 import { File } from 'web3.storage';
 import Papa from 'papaparse';
+
+export var ipfsURL;
+export var theData = [];
 
 export default function Upload() {
   function getAccessToken() {
@@ -11,16 +15,26 @@ export default function Upload() {
   async function webstorage(data) {
     const client = new Web3Storage({ token: getAccessToken() });
     const rootCid = await client.put(data);
-    console.log(rootCid);
+    ipfsURL = 'https://dweb.link/ipfs/' + rootCid;
+    console.log(ipfsURL);
+  }
+
+  function jsonToArray(data) {
+    for (let i in data) {
+      var theOne = data[i][0];
+      theData.push(theOne);
+    }
+    console.log(theData);
   }
 
   function startPapa() {
     const theFile = Papa.parse(document.getElementById('upfile').files[0], {
       download: true,
-      header: true,
+      header: false,
       skipEmptyLines: true,
       complete: function (results) {
-        console.log(results['data']);
+        var data = results['data'];
+        jsonToArray(data);
       },
     });
   }
@@ -127,9 +141,7 @@ export default function Upload() {
         </div>
         <div>
           {' '}
-          <button className="bg-white p-3 sm:ml-10 font-semibold  mt-10 rounded-lg">
-            Send NFT's
-          </button>
+          <TheMint />
         </div>
       </div>
     </div>
