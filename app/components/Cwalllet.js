@@ -1,17 +1,5 @@
 import { useConnect } from 'wagmi';
 
-function certificateButton() {
-  const { isSuccess } = useConnect();
-  return (
-    <a
-      href="#"
-      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-    >
-      {isSuccess && 'Certificates'}
-    </a>
-  );
-}
-
 function Profile() {
   const { connect, connectors, error, isLoading, pendingConnector } =
     useConnect();
@@ -37,5 +25,4 @@ function Profile() {
     </div>
   );
 }
-export { certificateButton };
 export default Profile;
