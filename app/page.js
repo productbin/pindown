@@ -1,5 +1,4 @@
-import { Montserrat } from '@next/font/google';
-export default function Home() {
+ export default function Home() {
   return (
     <main className=" justify-center text-white">
       <div className="flex border-white border-50 border-solid  items-center justify-center mt-16 m-2">
@@ -29,25 +28,25 @@ export default function Home() {
           <div className="">
             <div className="flex justify-center m-5">
               {' '}
-              <h1 className="font-bold text-2xl sm:text-5xl items-center">
+              <h1 className="font-bold text-2xl sm:text-5xl items-center ">
                 WHY PINDOWN ?
               </h1>
             </div>
             <div>
               {' '}
-              <h1 className="font-bold  text-xl sm:text-4xl items-center">
+              <h1 className="font-bold  text-xl sm:text-4xl items-center ">
                 Pindown is a blockchain-based document verifier.{' '}
               </h1>
             </div>
           </div>
         </div>
         <div className="items-center sm:justify-around">
-          <div className="sm:flex justify-evenly m-10">
-            <div className=" min-w-[25%]  p-10 sm:p-4 m-2">
+          <div className="sm:flex justify-evenly m-10 ">
+            <div className=" min-w-[45%]  p-10 sm:p-4 m-2">
               <img src="transparent.png" alt="Girl in a jacket" />
             </div>
             <div className=" m-8 p-10 text-center justify-center items-center self-center ">
-              <p>
+              <p className="">
                 Anyone can view the legit source and destination of any
                 certificate(or document in general). It records the document
                 transfer data and link details on-chain such that only the
@@ -58,10 +57,10 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="items-center sm:justify-around">
+          <div className="items-center sm:justify-around ">
             <div className="sm:flex justify-evenly m-10">
               <div className=" m-8 p-10 text-center justify-center items-center self-center ">
-                <p>
+                <p className="font-int ">
                   Anyone can view the legit source and destination of any
                   certificate(or document in general). It records the document
                   transfer data and link details on-chain such that only the
@@ -72,14 +71,14 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className=" min-w-[25%]  p-10 sm:p-4 m-2">
-                <img src="transparent.png" alt="Girl in a jacket" />
+              <div className=" min-w-[45%]  p-10 sm:p-4 m-2">
+                <img src="verify.png" alt="Girl in a jacket" />
               </div>
             </div>
             <div className="items-center sm:justify-around">
               <div className="sm:flex justify-evenly m-10">
-                <div className=" min-w-[25%]  p-10 sm:p-4 m-2">
-                  <img src="transparent.png" alt="Girl in a jacket" />
+                <div className=" min-w-[45%]  p-10 sm:p-4 m-2">
+                  <img src="secure.png" alt="Girl in a jacket" />
                 </div>
                 <div className=" m-8 p-10 text-center justify-center items-center self-center ">
                   <p>

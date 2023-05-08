@@ -1,6 +1,19 @@
 import "./globals.css";
 import Navbar from "./components/navbar.js";
 import Footer from "./components/footer.js";
+import { Inter, Roboto_Mono } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+
+const roboto_mono = Roboto_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-roboto-mono',
+});
 
 export const metadata = {
   title: "Pindown",
@@ -11,7 +24,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className="bg-no-repeat bg-gradient-to-b from-gra-one via-gra-two to-gra-tri ..."
+      className="bg-no-repeat bg-gradient-to-b from-gra-one via-gra-two to-gra-tri ${inter.variable} ${roboto_mono.variable}"
     >
       <body>
         <Navbar />

@@ -3,8 +3,7 @@ import { useConnect } from 'wagmi';
 function Profile() {
   const { connect, connectors, error, isLoading, pendingConnector } =
     useConnect();
-
-  return (
+ return (
     <div>
       {connectors.map((connector) => (
         <button
@@ -13,7 +12,7 @@ function Profile() {
           key={connector.id}
           onClick={() => connect({ connector })}
         >
-          {connector.ready && 'Connected'}
+          {connector.ready && "Connected"}
           {!connector.ready && ' Connect Wallet'}
           {isLoading &&
             connector.id === pendingConnector?.id &&
