@@ -28,6 +28,7 @@ const client = createClient({
 });
 
 function Mint() {
+  console.log("Mint Function Inside")
   const config = {
     address: '0x41E405438dF59D438D62385e762B7e4B54AE2517',
     abi: abiData,
