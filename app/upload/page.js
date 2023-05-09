@@ -10,7 +10,7 @@ export var theData = [];
 
 export default function Upload() {
   function getAccessToken() {
-    return process.env.NEXT_PUBLIC_API_KEY;
+    return process.env.WEB_KEY;
   }
   async function webstorage(data) {
     const client = new Web3Storage({ token: getAccessToken() });
