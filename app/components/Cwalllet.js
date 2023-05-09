@@ -12,8 +12,8 @@ function Profile() {
           key={connector.id}
           onClick={() => connect({ connector })}
         >
-          {connector.ready && "Connected"}
           {!connector.ready && ' Connect Wallet'}
+          {connector.ready && "Connected"}
           {isLoading &&
             connector.id === pendingConnector?.id &&
             ' (Connecting)'}
