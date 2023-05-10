@@ -101,6 +101,16 @@ x] peer-focus:leading-tight peer-focus:text-pink-500 peer-focus:before:border-t-
                 Description
               </label>
             </div>
+            <div>
+              <input
+                type="file"
+                id="upfile"
+                accept=".csv"
+                className="space-x-8 bg-transperent p-3 border-4 border-white text-white sm:ml-8  font-semibold  mt-10 rounded-lg"
+                hidden
+              />
+            </div>
+
             <div class="relative flex h-10 w-full m-5 min-w-[24rem] max-w-[24rem]">
               <input
                 id="imgurl"
@@ -123,39 +133,54 @@ x] peer-focus:leading-tight peer-focus:text-pink-500 peer-focus:before:border-t-
           </div>
         </div>
       </div>
-      <div className="m-5  sm:flex justify-evenly text-gra-one ">
-        <div>
-          {' '}
+      <div className="m-5  sm:flex sm:justify-evenly text-gra-one ">
+        <div className="min-w-1/4">
           <button
-            id="upbtn"
             onClick={parsecsv}
-            className="bg-white p-3 sm:ml-10 font-semibold  mt-10 rounded-lg"
+            class="border-none relative inline-block text-lg group"
           >
-            Upload Wallet Address
+            <span class="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
+              <span class="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
+              <span class="absolute left-0 w-64 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-gray-900 group-hover:-rotate-180 ease"></span>
+              <span class="relative">Upload Wallet Address</span>
+            </span>
+            <span
+              class="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-900 rounded-lg group-hover:mb-0 group-hover:mr-0"
+              data-rounded="rounded-lg"
+            ></span>
           </button>
         </div>
-
-        <div>
-          {' '}
+        <div className="min-w-1/4">
           <button
-            id="upbtn"
             onClick={imageStorage}
-            className="bg-white p-3 sm:ml-10 font-semibold  mt-10 rounded-lg"
+            class="border-none relative inline-block text-lg group"
           >
-            Upload Photo To IPFS
+            <span class="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
+              <span class="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
+              <span class="absolute left-0 w-64 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-gray-900 group-hover:-rotate-180 ease"></span>
+              <span class="relative">Upload Image To IPFS</span>
+            </span>
+            <span
+              class="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-900 rounded-lg group-hover:mb-0 group-hover:mr-0"
+              data-rounded="rounded-lg"
+            ></span>
           </button>
         </div>
 
-        <div>
-          {' '}
-          <button
-            onClick={getdata}
-            className="bg-white p-3 sm:ml-10 font-semibold  mt-10 rounded-lg"
-          >
-            Upload Data To IPFS
-          </button>
+        <div className="min-w-1/4">
+          <button onClick={getdata} class="relative inline-block text-lg group">
+            <span class="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
+              <span class="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
+              <span class="absolute left-0 w-64 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-gray-900 group-hover:-rotate-180 ease"></span>
+              <span class="relative">Upload Data To IPFS</span>
+            </span>
+            <span
+              class="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-900 rounded-lg group-hover:mb-0 group-hover:mr-0"
+              data-rounded="rounded-lg"
+            ></span>
+          </button>{' '}
         </div>
-        <div>
+        <div className="min-w-1/4">
           {' '}
           <TheMint />
         </div>
