@@ -24,7 +24,8 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className="bg-no-repeat bg-gradient-to-b from-gra-one via-gra-two to-gra-tri ${inter.variable} ${roboto_mono.variable}"
+     //className="bg-no-repeat bg-gradient-to-b from-gra-one via-gra-two to-gra-tri ${inter.variable} ${roboto_mono.variable}"
+      className="bg-black bg-[url('/img/bg.png')] bg-no-repeat "
     >
       <body>
         <Navbar className=""/>

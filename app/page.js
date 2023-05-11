@@ -1,6 +1,6 @@
- export default function Home() {
+export default function Home() {
   return (
-    <main className=" justify-center text-white">
+    <main className="  justify-center text-white">
       <div className="flex border-white border-50 border-solid  items-center justify-center mt-16 m-2">
         <h1 className="font-bold text-3xl sm:text-7xl">
           Powerful for developers.
@@ -12,14 +12,30 @@
         </h1>
       </div>
       <div className="flex items-center justify-center mt-16">
-        <div>
-          <button className="bg-white text-gra-two font-bold p-3 m-2 rounded-lg  hover:bg-gray-700 hover:text-white  ">
-            START HERE{' '}
+        <div className="m-1">
+          <button className="relative inline-block text-lg group">
+            <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
+              <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
+              <span className="absolute left-0 w-64 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12  hover:from-purple-600 hover:to-pink-600 ease bg-gradient-to-br from-purple-500 to-pink-500  group-hover:-rotate-180 ease"></span>
+              <span className="relative">START HERE</span>
+            </span>
+            <span
+              className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear  hover:from-purple-600 hover:to-pink-600 ease bg-gradient-to-br from-purple-500 to-pink-500  rounded-lg group-hover:mb-0 group-hover:mr-0"
+              data-rounded="rounded-lg"
+            ></span>
           </button>
         </div>
-        <div>
-          <button className="font-bold rounded-lg border-white border-2 p-3 w-28 m-2  hover:bg-white hover:text-gray-700 ">
-            DOCS
+        <div className="m-1">
+          <button className="relative inline-block text-lg group">
+            <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
+              <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-transperent"></span>
+              <span className="absolute left-0 w-64 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12  hover:from-purple-600 hover:to-pink-600 ease bg-gradient-to-br from-purple-500 to-pink-500  group-hover:-rotate-180 ease"></span>
+              <span className="relative">DOCS</span>
+            </span>
+            <span
+              className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear   bg-white rounded-lg group-hover:mb-0 group-hover:mr-0"
+              data-rounded="rounded-lg"
+            ></span>
           </button>
         </div>
       </div>
