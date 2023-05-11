@@ -11,7 +11,7 @@ function CertificateButton() {
 
         <a
           href="/login"
-          className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+          className="text-white hover:bg-gray-700 hover:underline hover:underline-offset-2  hover:text-white hover:rounded-lg  px-3 py-2  text-sm font-medium"
           key={connector.id}
         >
           {connector.ready && "Certificates"}
