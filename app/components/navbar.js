@@ -25,12 +25,12 @@ const client = createClient({
 function Navbar() {
   return (
     <WagmiConfig client={client}>
-      <div className="p-8">
-        <nav className="border-white border-4 rounded-lg ">
+      <div className="p-4">
+        <nav className="bg-white bg-opacity-5 rounded-lg ">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-around   h-16">
               <div className="flex items-center">
-                <a href="/" className="text-white font-bold text-xl">
+                <a href="/" className="text-white font-bold text-4xl hover:from-purple-600 hover:to-pink-600 ease bg-text-to-br from-purple-500 to-pink-500  ">
                   PINDOWN
                 </a>
               </div>
@@ -38,13 +38,13 @@ function Navbar() {
                 <div className="flex items-center justify-center ">
                   <a
                     href="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    className="text-white hover:bg-gray-700 hover:text-white hover:rounded-lg  px-3 py-2  text-sm font-medium"
                   >
                     Home
                   </a>
                   <a
                     href="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    className="text-white hover:bg-gray-700 hover:text-white hover:rounded-lg px-3 py-2  text-sm font-medium"
                   >
                     About
                   </a>

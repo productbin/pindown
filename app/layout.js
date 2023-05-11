@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
       className="bg-no-repeat bg-gradient-to-b from-gra-one via-gra-two to-gra-tri ${inter.variable} ${roboto_mono.variable}"
     >
       <body>
-        <Navbar />
+        <Navbar className=""/>
         {children}
         <Footer />
       </body>
