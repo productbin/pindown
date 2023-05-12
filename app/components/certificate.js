@@ -1,25 +1,38 @@
-'use client';
+import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { useConnect } from 'wagmi';
-import {useState} from  'react';
+
 function CertificateButton() {
-  const [text,setText] = useState(false);
+  const [text, setText] = useState(false);
   const { connectors } = useConnect();
+
+  useEffect(() => {
+    // Update the text state based on connector status
+    if (connectors.length > 0 && connectors[0].ready) {
+      setText(true);
+    }
+  }, [connectors]);
 
   return (
     <div>
-      {connectors.map((connector) => (
-
+      {text && (
         <a
           href="/login"
-          className="text-white hover:bg-gray-700 hover:underline hover:underline-offset-2  hover:text-white hover:rounded-lg  px-3 py-2  text-sm font-medium"
-          key={connector.id}
+          className="text-white hover:bg-gray-700 hover:underline hover:underline-offset-2 hover:text-white hover:rounded-lg px-3 py-2 text-sm font-medium"
         >
-          {connector.ready && "Certificates"}
-
+          Certificates
         </a>
-      ))}
+      )}
     </div>
   );
 }
 
-export default CertificateButton;
+function ShowButton() {
+  return (
+    <div>
+      <CertificateButton />
+    </div>
+  );
+}
+
+export default ShowButton;

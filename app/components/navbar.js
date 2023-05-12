@@ -1,6 +1,6 @@
 'use client';
 import Profile from './Cwalllet';
-import CertificateButton from './certificate';
+import ShowButton from './certificate';
 import { useEffect, useState } from 'react';
 import { WagmiConfig, createClient, configureChains, mainnet } from 'wagmi';
 import { polygonMumbai } from 'wagmi/chains';
@@ -49,7 +49,7 @@ function Navbar() {
                   >
                     About
                   </a>
-                  <CertificateButton />
+                  <ShowButton />
                 </div>
               </div>
               <div>
