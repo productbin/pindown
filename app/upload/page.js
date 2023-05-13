@@ -1,6 +1,7 @@
 'use client';
 import '../globals.css';
 import TheMint from './mintNFT';
+import ArrayDisplay from '../components/displayWallet';
 import { Web3Storage } from 'web3.storage';
 import { File } from 'web3.storage';
 import Papa from 'papaparse';
@@ -12,6 +13,7 @@ var theImageUrl;
 
 export default function Upload() {
   const [uploading, setUploading] = useState(false);
+  const [displayWallets, setDisplayWallets] = useState(false);
 
   function getAccessToken() {
     return process.env.NEXT_PUBLIC_API_KEY;
@@ -52,6 +54,7 @@ export default function Upload() {
       theData.push(theOne);
     }
     console.log(theData);
+    setDisplayWallets(true);
   }
 
   function startPapa() {
@@ -145,6 +148,19 @@ export default function Upload() {
               </label>
             </div>
             <TheMint />
+          </div>
+        </div>
+      </div>
+      <div>
+        <div className="items-center flex-col">
+          <div className="text-white  font-bold text-4xl hover:bg-gradient-to-r from-purple-600  to-pink-600 hover:text-transparent hover:bg-clip-text ">
+            {' '}
+            WALLET ADDRESSES
+          </div>
+          <div>
+            {displayWallets && (
+              <ArrayDisplay onChange={parsecsv} array={theData} />
+            )}
           </div>
         </div>
       </div>
