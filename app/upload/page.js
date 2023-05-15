@@ -91,7 +91,7 @@ export default function Upload() {
   }
   return (
     <div className="rounded-lg  p-5 text-white">
-      <div className="sm:flex sm:justify-center rounded-lg bg-white bg-opacity-5 	">
+      <div className="sm:flex sm:justify-center rounded-lg bg-white bg-opacity-5 ">
         <div>
           <div className="flex w-72 flex-col items-center  m-5 items-end gap-6">
             <div className="relative flex h-10 w-full m-5 min-w-[24rem] max-w-[24rem]">
@@ -153,10 +153,6 @@ export default function Upload() {
       </div>
       <div>
         <div className="items-center flex-col">
-          <div className="text-white  font-bold text-4xl hover:bg-gradient-to-r from-purple-600  to-pink-600 hover:text-transparent hover:bg-clip-text ">
-            {' '}
-            WALLET ADDRESSES
-          </div>
           <div>
             {displayWallets && (
               <ArrayDisplay onChange={parsecsv} array={theData} />
