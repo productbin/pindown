@@ -1,17 +1,17 @@
-'use client';
-import Profile from './Cwalllet';
-import ShowButton from './certificate';
-import { useEffect, useState } from 'react';
-import { WagmiConfig, createClient, configureChains, mainnet } from 'wagmi';
-import { polygonMumbai } from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
-import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
+"use client";
+import Profile from "./Cwalllet";
+import Certificate from "./certificate";
+import { useEffect, useState } from "react";
+import { WagmiConfig, createClient, configureChains, mainnet } from "wagmi";
+import { polygonMumbai } from "wagmi/chains";
+import { alchemyProvider } from "wagmi/providers/alchemy";
+import { publicProvider } from "wagmi/providers/public";
+import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 
 const { chains, provider, webSocketProvider } = configureChains(
   [polygonMumbai],
   [
-    alchemyProvider({ apiKey: 'TVxT2Kjzsy4pFTaoWknc3O8SwxAuUqm6' }),
+    alchemyProvider({ apiKey: "TVxT2Kjzsy4pFTaoWknc3O8SwxAuUqm6" }),
     publicProvider(),
   ]
 );
@@ -30,8 +30,10 @@ function Navbar() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-around   h-16">
               <div className="flex items-center">
-                <a href="/" className="text-white font-bold text-4xl hover:bg-gradient-to-r from-purple-600  to-pink-600 hover:text-transparent hover:bg-clip-text  ">
-
+                <a
+                  href="/"
+                  className="text-white font-bold text-4xl hover:bg-gradient-to-r from-purple-600  to-pink-600 hover:text-transparent hover:bg-clip-text  "
+                >
                   PINDOWN
                 </a>
               </div>
@@ -49,11 +51,11 @@ function Navbar() {
                   >
                     About
                   </a>
-                  <ShowButton />
+                  <Certificate />
                 </div>
               </div>
               <div>
-                <Profile />{' '}
+                <Profile />{" "}
               </div>
             </div>
           </div>
