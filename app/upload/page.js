@@ -6,6 +6,11 @@ import { Web3Storage } from "web3.storage";
 import { File } from "web3.storage";
 import Papa from "papaparse";
 import { useEffect, useRef, useState } from "react";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+library.add(faInfoCircle);
 
 export var ipfsURL;
 export var theData = [];
@@ -14,7 +19,7 @@ var theImageUrl;
 export default function Upload() {
   const [uploading, setUploading] = useState(false);
   const [displayWallets, setDisplayWallets] = useState(false);
-
+  const [isButtonHovered, setIsButtonHovered] = useState(false);
   function getAccessToken() {
     return process.env.NEXT_PUBLIC_API_KEY;
   }
@@ -118,20 +123,41 @@ export default function Upload() {
               <div className="relative flex h-10 m-5 w-full m-5 min-w-[24rem] max-w-[24rem]">
                 <label
                   htmlFor="csvfile"
-                  className="relative inline-block px-4 py-2 h-full w-full text-sm font-medium leading-5 text-white  border  rounded-[7px]  cursor-pointer bg-transparent hover:border-pink-500 hover:text-pink-500"
+                  className="relative inline-block px-4 py-2 h-full w-full text-sm font-medium leading-5 text-white border rounded-[7px] cursor-pointer bg-transparent hover:border-pink-500 hover:text-pink-500"
                 >
-                  <span className="mr-2">Choose CSV File</span>
-                  <input
-                    id="csvfile"
-                    type="file"
-                    accept=".csv"
-                    onChange={parsecsv}
-                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                    placeholder=""
-                    required
-                  />
+                  <div className="flex justify-between">
+                    <span className="">Choose CSV File</span>
+                    <input
+                      id="csvfile"
+                      type="file"
+                      accept=".csv"
+                      onChange={parsecsv}
+                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                      placeholder=""
+                      required
+                    />
+                    <button
+                      onMouseEnter={() => setIsButtonHovered(true)}
+                      onMouseLeave={() => setIsButtonHovered(false)}
+                      className="relative"
+                    >
+                      <div>
+                        <FontAwesomeIcon
+                          icon={faInfoCircle}
+                          style={{ color: "white" }}
+                        />
+                      </div>
+                      {isButtonHovered && (
+                        <img
+                          className="absolute top-[-25rem] left-1/2 min-w-[500px] h-[500px] rounded-full object-cover transition-transform transform hover:scale-125"
+                          src="walletI.png"
+                          alt="Image"
+                        />
+                      )}
+                    </button>
+                  </div>
                 </label>
-              </div>
+              </div>{" "}
               <div className="relative  flex  h-10 m-5 w-full m-5 min-w-[24rem] max-w-[24rem]">
                 <input
                   id="imgurl"

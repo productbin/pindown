@@ -1,6 +1,14 @@
+"use client";
+import { useEffect } from "react";
 import { useAccount } from "wagmi";
+
 function Certificate() {
   const { isConnected } = useAccount();
+
+  useEffect(() => {
+    // This ensures the hook is only used on the client-side
+    // and prevents the hydration error
+  }, []);
 
   return (
     <>
@@ -16,4 +24,5 @@ function Certificate() {
     </>
   );
 }
+
 export default Certificate;
