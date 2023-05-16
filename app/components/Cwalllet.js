@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
-import { useConnect } from 'wagmi';
+import { useEffect, useState } from "react";
+import { useConnect, useAccount } from "wagmi";
 
 function Profile() {
-  const { connect, connectors, error, isLoading,isSuccess, pendingConnector } = useConnect();
+  const { connector: activeConnector, isConnected } = useAccount();
+  const { connect, connectors, error, isLoading, isSuccess, pendingConnector } =
+    useConnect();
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
@@ -24,10 +26,10 @@ function Profile() {
             <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
             <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 hover:from-purple-600 hover:to-pink-600 ease bg-gradient-to-br from-purple-500 to-pink-500 group-hover:-rotate-180 ease"></span>
             <span className="relative">
-              {/*(isSuccess && connector.ready) && 'Connected'}
-              {(!isSuccess && connector.ready) && 'Connect Wallet'*/}
-              {isSuccess && connector.ready ? 'Connected' : 'Connect Wallet'}
-              {isLoading && connector.id === pendingConnector?.id && ' (Connecting)'}
+              {isConnected && connector.ready ? "Connected" : "Connect Wallet"}
+              {isLoading &&
+                connector.id === pendingConnector?.id &&
+                " (Connecting)"}
             </span>
           </span>
           <span
