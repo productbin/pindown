@@ -1,9 +1,7 @@
-import { useAccount, useConnect } from "wagmi";
-
+import { useAccount } from "wagmi";
 function Certificate() {
-  const { connector: activeConnector, isConnected } = useAccount();
-  const { connect, connectors, error, isLoading, pendingConnector } =
-    useConnect();
+  const { isConnected } = useAccount();
+
   return (
     <>
       {isConnected && (
