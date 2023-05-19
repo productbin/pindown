@@ -1,6 +1,7 @@
 "use client";
 import "../globals.css";
 import ArrayDisplay from "../components/displayWallet";
+import ArrayShow from "../components/displayMonoWallet";
 import { Web3Storage } from "web3.storage";
 import { File } from "web3.storage";
 import Papa from "papaparse";
@@ -68,8 +69,17 @@ export default function Upload() {
   const [displayWallets, setDisplayWallets] = useState(false);
   const [isButtonHovered, setIsButtonHovered] = useState(false);
   const [uploadedUrl, setUploadedUrl] = useState("");
+  const [displayMonoWallets, setDisplayMonoWallets] = useState(false);
   function getAccessToken() {
     return process.env.NEXT_PUBLIC_API_KEY;
+  }
+
+  async function monoInput() {
+    var data = document.getElementById("monoWalletAddress").value;
+    theData.push(data);
+    setDisplayMonoWallets(true);
+    alert(data + " Wallet Adress Added");
+    document.getElementById("monoWalletAddress").value = ""; // Set the value to an empty string
   }
 
   async function Everything() {
@@ -226,6 +236,24 @@ export default function Upload() {
                     </div>
                   </label>
                 </div>{" "}
+                <div className="relative flex m-5 h-10 w-full m-5 min-w-[24rem] max-w-[24rem]">
+                  <input
+                    id="monoWalletAddress"
+                    className="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-2 border-l-2 border-r-2 bg-transparent px-3 py-2.5 pr-20 font-sans text-sm font-normal text-blue-gray-700 outline-none transition-all placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-pink-500 focus:border-t-transparent focus:outline-none disabled:border-0 disabled:bg-blue-gray-50"
+                    placeholder=" "
+                  />
+                  <button
+                    onClick={monoInput}
+                    className="!absolute right-1 top-1 z-10 select-none rounded bg-pink-500 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none peer-placeholder-shown:pointer-events-none peer-placeholder-shown:bg-blue-gray-500 peer-placeholder-shown:opacity-50 peer-placeholder-shown:shadow-none"
+                    data-ripple-light="false"
+                  >
+                    ENTER
+                  </button>
+
+                  <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-pink-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-pink-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                    Insert Wallet Address{" "}
+                  </label>
+                </div>
                 <div className="relative  flex  h-10 m-5 w-full m-5 min-w-[24rem] max-w-[24rem]">
                   <input
                     id="imgurl"
@@ -255,6 +283,9 @@ export default function Upload() {
                 {displayWallets && (
                   <ArrayDisplay onChange={parsecsv} array={theData} />
                 )}
+              </div>
+              <div className="">
+                {displayMonoWallets && <ArrayShow array={theData} />}
               </div>
             </div>
           </div>
