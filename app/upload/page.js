@@ -70,18 +70,18 @@ export default function Upload() {
   const [isButtonHovered, setIsButtonHovered] = useState(false);
   const [uploadedUrl, setUploadedUrl] = useState("");
   const [displayMonoWallets, setDisplayMonoWallets] = useState(false);
+  const [theData, setTheData] = useState([]);
   function getAccessToken() {
     return process.env.NEXT_PUBLIC_API_KEY;
   }
 
-  async function monoInput() {
-    var data = document.getElementById("monoWalletAddress").value;
-    theData.push(data);
+  const monoInput = () => {
+    const data = document.getElementById("monoWalletAddress").value;
+    setTheData((prevData) => [...prevData, data]); // Update theData array with new value
     setDisplayMonoWallets(true);
-    alert(data + " Wallet Adress Added");
+    alert(data + " Wallet Address Added");
     document.getElementById("monoWalletAddress").value = ""; // Set the value to an empty string
-  }
-
+  };
   async function Everything() {
     try {
       setUploading(true);
@@ -153,7 +153,7 @@ export default function Upload() {
       description: Description,
       image: theImageUrl,
       name: Name,
-      attributes: Attributes,
+      attributes: [Attributes],
     };
     const blob = new Blob([JSON.stringify(inputData)], {
       type: "application/json",
