@@ -136,12 +136,13 @@ export default function Upload() {
   }
 
   function getdata() {
+    const Name = document.getElementById("name").value;
     const Description = document.getElementById("desc").value;
     const Attributes = document.getElementById("attribute").value;
     let inputData = {
       description: Description,
       image: theImageUrl,
-      name: "Pindown",
+      name: Name,
       attributes: Attributes,
     };
     const blob = new Blob([JSON.stringify(inputData)], {
@@ -157,6 +158,16 @@ export default function Upload() {
           <div className="sm:flex sm:justify-center  rounded-lg bg-white bg-opacity-5 ">
             <div>
               <div className="flex-col items-center  space-y-12  m-5 items-end gap-6">
+                <div className="relative flex m-5 h-10 w-full m-5 min-w-[24rem] max-w-[24rem]">
+                  <input
+                    id="name"
+                    className="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-2 border-l-2 border-r-2 bg-transparent px-3 py-2.5 pr-20 font-sans text-sm font-normal text-blue-gray-700 outline-none transition-all placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-pink-500 focus:border-t-transparent focus:outline-none disabled:border-0 disabled:bg-blue-gray-50"
+                    placeholder=" "
+                  />
+                  <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-pink-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-pink-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                    Name Your NFT{" "}
+                  </label>
+                </div>
                 <div className="relative flex h-10 w-full m-5 min-w-[24rem] max-w-[24rem]">
                   <input
                     id="attribute"

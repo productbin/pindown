@@ -7,16 +7,18 @@ const ArrayDisplay = ({ array }) => {
         WALLET ADDRESSES
       </div>
 
-      <ul className="list-none min-w-min  bg-white bg-opacity-5 rounded-lg p-5 text-center">
-        {array.map((item, index) => (
-          <li
-            key={index}
-            className="flex flex-wrap justify-center rounded-lg  py-2 px-4 mb-2"
-          >
-            {index + 1 + ". " + item}
-          </li>
-        ))}
-      </ul>
+      <div className="max-h-60 overflow-y-auto bg-white bg-opacity-5 rounded-lg p-5 text-center">
+        <ul className="list-none min-w-min">
+          {array.map((item, index) => (
+            <li
+              key={index}
+              className="flex flex-wrap justify-center rounded-lg py-2 px-4 mb-2"
+            >
+              {index + 1 + ". " + item}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
