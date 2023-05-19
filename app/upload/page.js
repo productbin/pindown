@@ -67,6 +67,7 @@ export default function Upload() {
   const [uploading, setUploading] = useState(false);
   const [displayWallets, setDisplayWallets] = useState(false);
   const [isButtonHovered, setIsButtonHovered] = useState(false);
+  const [uploadedUrl, setUploadedUrl] = useState("");
   function getAccessToken() {
     return process.env.NEXT_PUBLIC_API_KEY;
   }
@@ -83,20 +84,27 @@ export default function Upload() {
       setUploading(false);
     }
   }
+
   async function imageStorage() {
-    const imageurl = document.getElementById("imgurl").value;
-    const imageData = [new File([imageurl], "image.png")];
+    const fileInput = document.getElementById("imgurl");
+    const file = fileInput.files[0];
+
+    if (!file) {
+      console.error("No file selected");
+      return;
+    }
+
+    const imageData = [file];
     const client = new Web3Storage({ token: getAccessToken() });
     const rootCid = await client.put(imageData);
-    ipfsURL = "https://dweb.link/ipfs/" + rootCid;
+    const ipfsURL = "ipfs://" + rootCid + "/" + file.name;
     console.log(ipfsURL);
     theImageUrl = ipfsURL;
   }
-
   async function webstorage(data) {
     const client = new Web3Storage({ token: getAccessToken() });
     const rootCid = await client.put(data);
-    ipfsURL = "https://dweb.link/ipfs/" + rootCid;
+    ipfsURL = "ipfs://" + rootCid + "/hello.json";
     console.log(ipfsURL);
   }
 
@@ -128,12 +136,13 @@ export default function Upload() {
   }
 
   function getdata() {
-    const description = document.getElementById("desc").value;
-    const attributes = document.getElementById("attribute").value;
+    const Description = document.getElementById("desc").value;
+    const Attributes = document.getElementById("attribute").value;
     let inputData = {
-      Image_Url: theImageUrl,
-      Description: description,
-      Attri: attributes,
+      description: Description,
+      image: theImageUrl,
+      name: "Pindown",
+      attributes: Attributes,
     };
     const blob = new Blob([JSON.stringify(inputData)], {
       type: "application/json",
