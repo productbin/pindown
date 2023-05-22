@@ -37,6 +37,9 @@ const client = createClient({
   webSocketProvider,
 });
 
+//Function For Minting NFT
+// Called Inside the Upload Function Bottom
+
 function Mint() {
   const config = {
     address: "0x41E405438dF59D438D62385e762B7e4B54AE2517",
