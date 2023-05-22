@@ -48,11 +48,14 @@ const MyComponent = () => {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   return <WagmiConfig>{write}</WagmiConfig>;
 };
 //Function For Minting NFT
 // Called Inside the Upload Function Bottom
 =======
+=======
+>>>>>>> parent of b7e8cdb (cleaning)
 =======
 >>>>>>> parent of b7e8cdb (cleaning)
 function Mint() {
