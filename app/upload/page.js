@@ -1,7 +1,6 @@
 "use client";
 import "../globals.css";
-import ArrayDisplay from "../components/displayWallet";
-import ArrayShow from "../components/displayMonoWallet";
+import ArrayShow from "../components/displayWallet";
 import { Web3Storage } from "web3.storage";
 import { File } from "web3.storage";
 import Papa from "papaparse";
@@ -223,10 +222,12 @@ export default function Upload() {
                 </div>
                 <div className="items-center  flex-col">
                   <div>
-                    {displayWallets && (
-                      <ArrayDisplay onChange={parsecsv} array={theData} />
+                    {(displayWallets || displayMonoWallets) && (
+                      <ArrayShow
+                        onChange={parsecsv || displayMonoWallets}
+                        array={theData}
+                      />
                     )}
-                    {displayMonoWallets && <ArrayShow array={theData} />}
                   </div>
                 </div>
                 <div className="flex  items-center m-0">
