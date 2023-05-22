@@ -221,7 +221,7 @@ export default function Upload() {
                     Description{" "}
                   </label>
                 </div>
-                <div className="items-center flex-col">
+                <div className="items-center  flex-col">
                   <div>
                     {displayWallets && (
                       <ArrayDisplay onChange={parsecsv} array={theData} />
@@ -229,7 +229,7 @@ export default function Upload() {
                     {displayMonoWallets && <ArrayShow array={theData} />}
                   </div>
                 </div>
-                <div className="flex items-center">
+                <div className="flex  items-center m-0">
                   <div className="relative flex h-10 m-5 w-full m-5 min-w-[24rem] max-w-[24rem]">
                     <label
                       htmlFor="csvfile"
@@ -290,7 +290,7 @@ export default function Upload() {
                     </label>
                   </div>
                 </div>
-                <div className="items-center h-64 w-64 m-0 flex-col">
+                <div className="items-center  w-64 m-0 flex-col">
                   <div id="imagePreview"></div>
                 </div>
                 <div className="relative  flex  h-10 m-5 w-full m-5 min-w-[24rem] max-w-[24rem]">
