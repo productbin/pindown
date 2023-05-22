@@ -95,6 +95,29 @@ export default function Upload() {
     }
   }
 
+  function handleImageSelect() {
+    const fileInput = document.getElementById("imgurl");
+    const file = event.target.files[0];
+
+    if (!file) {
+      console.error("No file selected");
+      return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      const imagePreview = document.getElementById("imagePreview");
+      const img = document.createElement("img");
+      img.src = e.target.result;
+      img.alt = "Selected Image";
+      imagePreview.innerHTML = "";
+      imagePreview.appendChild(img);
+    };
+
+    reader.readAsDataURL(file);
+  }
+
   async function imageStorage() {
     const fileInput = document.getElementById("imgurl");
     const file = fileInput.files[0];
@@ -261,6 +284,7 @@ export default function Upload() {
                     className="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 pr-20 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                     placeholder=" "
                     required
+                    onChange={handleImageSelect}
                   />
                   <button
                     onClick={Everything}
@@ -287,6 +311,7 @@ export default function Upload() {
               <div className="">
                 {displayMonoWallets && <ArrayShow array={theData} />}
               </div>
+              <div id="imagePreview"></div>
             </div>
           </div>
         </div>
