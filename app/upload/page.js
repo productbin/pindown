@@ -47,11 +47,14 @@ const MyComponent = () => {
   const { write } = useContractWrite(config);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   return <WagmiConfig>{write}</WagmiConfig>;
 };
 //Function For Minting NFT
 // Called Inside the Upload Function Bottom
 =======
+=======
+>>>>>>> parent of b7e8cdb (cleaning)
 function Mint() {
   const config = {
     address: "0x41E405438dF59D438D62385e762B7e4B54AE2517",
