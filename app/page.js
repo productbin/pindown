@@ -67,7 +67,7 @@ export default function Home() {
             </div>
             <div>
               {" "}
-              <h1 className="font-bold  text-xl sm:text-4xl items-center ">
+              <h1 className="font-bold  text-xl sm:text-4xl text-center items-center ">
                 Pindown is a blockchain-based document verifier.{" "}
               </h1>
             </div>
@@ -91,21 +91,23 @@ export default function Home() {
             </div>
           </div>
           <div className="items-center sm:justify-around ">
-            <div className="sm:flex justify-evenly m-10">
-              <div className=" m-8 p-10 text-center justify-center items-center self-center ">
-                <p className="font-int ">
-                  Anyone can view the legit source and destination of any
-                  certificate(or document in general). It records the document
-                  transfer data and link details on-chain such that only the
-                  issuer can specify the link to the document and receiver
-                  address and the source(issuer public key) is signed by the
-                  issuer. Anyone can also easily verify the same details through
-                  the PinDown Dapp.
-                </p>
-              </div>
+            <div className="items-center sm:justify-around">
+              <div className="sm:flex justify-evenly m-10">
+                <div className="m-8 p-10 text-center justify-center items-center self-center sm:w-1/2">
+                  <p className="font-int">
+                    Anyone can view the legit source and destination of any
+                    certificate (or document in general). It records the
+                    document transfer data and link details on-chain such that
+                    only the issuer can specify the link to the document and
+                    receiver address, and the source (issuer public key) is
+                    signed by the issuer. Anyone can also easily verify the same
+                    details through the PinDown Dapp.
+                  </p>
+                </div>
 
-              <div className=" min-w-[45%]  p-10 sm:p-4 m-2">
-                <img src="verify.png" alt="Girl in a jacket" />
+                <div className="min-w-[45%] p-10 sm:p-4 m-2 sm:w-1/2">
+                  <img src="verify.png" alt="Girl in a jacket" />
+                </div>
               </div>
             </div>
             <div className="items-center sm:justify-around">
