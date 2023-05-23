@@ -69,18 +69,17 @@ export default function Upload() {
   const [isButtonHovered, setIsButtonHovered] = useState(false);
   const [uploadedUrl, setUploadedUrl] = useState("");
   const [displayMonoWallets, setDisplayMonoWallets] = useState(false);
-
+  const [theData, setTheData] = useState([]);
   function getAccessToken() {
     return process.env.NEXT_PUBLIC_API_KEY;
   }
   const monoInput = () => {
-    setDisplayMonoWallets(true);
     const data = document.getElementById("monoWalletAddress").value;
-    theData.push(data);
+    setTheData((prevData) => [...prevData, data]); // Update theData array with new value
+    setDisplayMonoWallets(true);
     alert(data + " Wallet Address Added");
     document.getElementById("monoWalletAddress").value = ""; // Set the value to an empty string
   };
-
   async function Everything() {
     try {
       setUploading(true);
@@ -162,7 +161,6 @@ export default function Upload() {
 
   function parsecsv() {
     const fileInput = document.getElementById("csvfile");
-
     startPapa();
   }
 
@@ -222,7 +220,7 @@ export default function Upload() {
                 <div className="items-center  flex-col">
                   <div>
                     {(displayWallets || displayMonoWallets) && (
-                      <ArrayShow array={theData} onChange={parsecsv} />
+                      <ArrayShow array={theData} />
                     )}
                   </div>
                 </div>

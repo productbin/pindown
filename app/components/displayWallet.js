@@ -10,11 +10,8 @@ const ArrayShow = ({ array }) => {
   }, [array]);
 
   const handleDelete = (index) => {
-    // Create a copy of the original array
     const updatedItems = [...items];
-    // Remove the item at the specified index
     updatedItems.splice(index, 1);
-    // Update the state with the modified array
     setItems(updatedItems);
   };
 
