@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from "react";
 
 const ArrayShow = ({ array }) => {
@@ -6,6 +8,15 @@ const ArrayShow = ({ array }) => {
   useEffect(() => {
     setItems(array);
   }, [array]);
+
+  const handleDelete = (index) => {
+    // Create a copy of the original array
+    const updatedItems = [...items];
+    // Remove the item at the specified index
+    updatedItems.splice(index, 1);
+    // Update the state with the modified array
+    setItems(updatedItems);
+  };
 
   return (
     <div>
@@ -21,6 +32,9 @@ const ArrayShow = ({ array }) => {
               className="flex flex-wrap justify-center rounded-lg py-2 px-4 mb-2"
             >
               {index + 1 + ". " + item}
+              <button onClick={() => handleDelete(index)} className="ml-2">
+                <FontAwesomeIcon icon={faTrash} style={{ color: "#ff0000" }} />
+              </button>
             </li>
           ))}
         </ul>
