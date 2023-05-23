@@ -56,7 +56,7 @@ function Navbar() {
               <div className="hidden md:block min-w-[70%]">
                 <div className="flex items-center justify-center">
                   <a
-                    href="#"
+                    href="/"
                     className="text-white hover:bg-gray-700 hover:underline hover:underline-offset-2 hover:text-white hover:rounded-lg px-3 py-2 text-sm font-medium"
                   >
                     Home
