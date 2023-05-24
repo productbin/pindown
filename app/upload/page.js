@@ -227,7 +227,7 @@ export default function Upload() {
     <WagmiConfig client={client}>
       <div className="rounded-lg p-5 w-full text-white">
         <div className="sm:flex sm:justify-center  "></div>
-        <div className="rounded-lg bg-white bg-opacity-5 justify-evenly">
+        <div className="rounded-lg bg-white bg-opacity-5 p-2  justify-evenly">
           <div className="flex justify-evenly">
             <div className="flex-col justify-center">
               <div className="flex justify-center">
@@ -259,16 +259,16 @@ export default function Upload() {
                     placeholder="Attributes"
                   />
                 </div>
-                <div className="mb-6">
-                  <label className="block text-white text-sm font-bold mb-2">
+                <div className="w-96">
+                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                     Description
                   </label>
-                  <input
-                    placeholder="Enter description....."
-                    type="text"
+                  <textarea
                     id="desc"
-                    className="shadow h-48 bg-transparent border rounded-lg  w-96 py-2 px-3 text-white focus:text-pink-500 leading-tight focus:outline-none focus:border-pink-500 focus:shadow-outline"
-                  />
+                    rows="6"
+                    className="block w-96  p-2.5 w-full text-sm text-white bg-transparent rounded-lg border border-white  focus:ring-pink-500 focus:outline-none focus:border-pink-500 focus:shadow-outline"
+                    placeholder="Write your thoughts here..."
+                  ></textarea>
                 </div>
                 <div className="mb-6">
                   <label className="block text-white text-sm font-bold mb-2">
@@ -306,7 +306,7 @@ export default function Upload() {
                 </h1>
               </div>
 
-              <div className="relative m-5 flex h-10 m-5 w-full m-5 min-w-[24rem] max-w-[24rem]">
+              <div className="relative m-11 flex h-10 m-5 w-full m-5 min-w-[24rem] max-w-[24rem]">
                 <label className="relative inline-block px-4 py-2 h-full w-full text-sm font-medium leading-5 text-white border rounded-lg cursor-pointer bg-transparent hover:border-pink-500 hover:text-pink-500">
                   <div className="flex justify-between">
                     <span className="">Choose CSV File</span>
@@ -320,6 +320,9 @@ export default function Upload() {
                     />
                   </div>
                 </label>
+              </div>
+              <div className="flex justify-center">
+                <img alt="csv format" src="walletI.png" />
               </div>
               <div className="items-center flex justify-center m-5 font-bold text-3xl">
                 {"OR"}
@@ -358,13 +361,13 @@ export default function Upload() {
             <div>
               <div className="flex justify-center m-5">
                 <button
-                  className="relative inline-block text-lg group w-full sm:w-auto sm:text-sm"
+                  className="relative inline-block text-lg group w-full sm:w-48 sm:text-sm"
                   onClick={handleAllFunctions}
                 >
                   <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
                     <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
                     <span className="absolute left-0 w-64 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 hover:from-purple-600 hover:to-pink-600 ease bg-gradient-to-br from-purple-500 to-pink-500 group-hover:-rotate-180 ease"></span>
-                    <span className="relative text-lg">1.SEND</span>
+                    <span className="relative text-lg"> SEND </span>
                   </span>
                   <span
                     className="absolute bottom-0 right-0 w-full h-full -mb-1 -mr-1 transition-all duration-200 ease-linear hover:from-purple-600 hover:to-pink-600 ease bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg group-hover:mb-0 group-hover:mr-0"
