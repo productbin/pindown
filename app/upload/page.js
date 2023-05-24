@@ -16,9 +16,22 @@ import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { useContractWrite } from "wagmi";
+import multer from "multer";
 import abiData from "./abi.json";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faInfoCircle);
+// Global Vaiables
+//Multer Stuff
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "public");
+  },
+  filename: function (req, file, cb) {
+    cb(null, new Date().toISOString() + "-" + file.originalname);
+  },
+});
+const upload = multer({ storage: storage });
 
 var ipfsURL;
 var theData = [];
@@ -74,6 +87,14 @@ export default function Upload() {
   function getAccessToken() {
     return process.env.NEXT_PUBLIC_API_KEY;
   }
+  function handleSelectedImage() {
+    var imageElement = document.getElementById("imgurl");
+    imageElement.value = null;
+
+    var parentElement = document.getElementById("imagePreview");
+    var imgElement = parentElement.querySelector("img");
+    imgElement.src = "";
+  }
   const monoInput = () => {
     const data = document.getElementById("monoWalletAddress").value;
     setDisplayMonoWallets(true);
@@ -82,18 +103,38 @@ export default function Upload() {
     alert(data + " Wallet Address Added");
     document.getElementById("monoWalletAddress").value = ""; // Set the value to an empty string
   };
-  async function Everything() {
+
+  async function handleAllFunctions(req, res, next) {
     try {
-      setUploading(true);
-      await imageStorage(); // Assuming imageStorage is an asynchronous function
-      await getdata(); // Assuming getdata is an asynchronous function
+      await upload.single("imgurl")(req, res, async function (err) {
+        if (err) {
+          console.error("Error uploading image:", err);
+          return next(err);
+        }
+        if (!req.file) {
+          console.error("No file selected");
+          return next(new Error("No file selected"));
+        }
+
+        const file = req.file;
+
+        // Set the image URL to be used in the frontend
+        theImageUrl = "/img/" + file.filename;
+        setUploading(true);
+        await imageStorage(); // Assuming imageStorage is an asynchronous function
+        await getdata(); // Assuming getdata is an asynchronous function
+
+        // Continue with other logic or function calls
+        // ...
+      });
     } catch (error) {
-      // Handle any errors that occurred during the asynchronous tasks
       console.error(error);
+      next(error);
     } finally {
       setUploading(false);
     }
   }
+
   function handleImageSelect() {
     const fileInput = document.getElementById("imgurl");
     const file = event.target.files[0];
@@ -109,7 +150,6 @@ export default function Upload() {
       const imagePreview = document.getElementById("imagePreview");
       const img = document.createElement("img");
       img.src = e.target.result;
-      img.alt = "Selected Image";
       imagePreview.innerHTML = "";
       imagePreview.appendChild(img);
     };
@@ -188,7 +228,7 @@ export default function Upload() {
       <div className="rounded-lg p-5 w-full text-white">
         <div className="sm:flex sm:justify-center  "></div>
         <div className="rounded-lg bg-white bg-opacity-5 justify-evenly">
-          <div className="flex justify-around">
+          <div className="flex justify-evenly">
             <div className="flex-col justify-center">
               <div className="flex justify-center">
                 <h1 className="text-2xl m-2 hover:underline-offset-1 font-medium">
@@ -227,20 +267,31 @@ export default function Upload() {
                     placeholder="Enter description....."
                     type="text"
                     id="desc"
-                    className="shadow bg-transparent border rounded-lg  w-96 py-2 px-3 text-white focus:text-pink-500 leading-tight focus:outline-none focus:border-pink-500 focus:shadow-outline"
+                    className="shadow h-48 bg-transparent border rounded-lg  w-96 py-2 px-3 text-white focus:text-pink-500 leading-tight focus:outline-none focus:border-pink-500 focus:shadow-outline"
                   />
                 </div>
                 <div className="mb-6">
                   <label className="block text-white text-sm font-bold mb-2">
                     Upload Photo
                   </label>
-                  <input
-                    id="imgurl"
-                    type="file"
-                    className="shadow bg-transparent border rounded-lg  w-96 py-2 px-3 text-white focus:text-pink-500 leading-tight focus:outline-none focus:border-pink-500 focus:shadow-outline"
-                    required
-                    onChange={handleImageSelect}
-                  />
+                  <div className="flex">
+                    <input
+                      id="imgurl"
+                      type="file"
+                      className="shadow bg-transparent border rounded-lg  w-96 py-2 px-3 text-white focus:text-pink-500 leading-tight focus:outline-none focus:border-pink-500 focus:shadow-outline"
+                      required
+                      onChange={handleImageSelect}
+                    />
+                    <button
+                      onClick={handleSelectedImage}
+                      className="ml-2 border-none"
+                    >
+                      <FontAwesomeIcon
+                        icon={faTrash}
+                        style={{ color: "#fff" }}
+                      />
+                    </button>
+                  </div>
                 </div>
 
                 <div className="items-center  w-64 m-0 flex-col">
@@ -273,7 +324,7 @@ export default function Upload() {
               <div className="items-center flex justify-center m-5 font-bold text-3xl">
                 {"OR"}
               </div>
-              <div className="flex justify-center   h-10 w-full  min-w-[24rem] max-w-[24rem]">
+              <div className="flex justify-center ml-5  h-10 w-full  min-w-[24rem] max-w-[24rem]">
                 <div>
                   <label className="block text-white text-sm font-bold mb-2">
                     Insert Wallet Address{" "}
@@ -308,7 +359,7 @@ export default function Upload() {
               <div className="flex justify-center m-5">
                 <button
                   className="relative inline-block text-lg group w-full sm:w-auto sm:text-sm"
-                  onClick={Everything}
+                  onClick={handleAllFunctions}
                 >
                   <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
                     <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
