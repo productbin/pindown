@@ -104,7 +104,7 @@ export default function Upload() {
     document.getElementById("monoWalletAddress").value = ""; // Set the value to an empty string
   };
 
-  async function handleAllFunctions(req, res, next) {
+  async function handleMulter(req, res, next) {
     try {
       await upload.single("imgurl")(req, res, async function (err) {
         if (err) {
@@ -134,7 +134,18 @@ export default function Upload() {
       setUploading(false);
     }
   }
-
+  async function handleAllFunctions() {
+    try {
+      setUploading(true);
+      await imageStorage(); // Assuming imageStorage is an asynchronous function
+      await getdata(); // Assuming getdata is an asynchronous function
+    } catch (error) {
+      // Handle any errors that occurred during the asynchronous tasks
+      console.error(error);
+    } finally {
+      setUploading(false);
+    }
+  }
   function handleImageSelect() {
     const fileInput = document.getElementById("imgurl");
     const file = event.target.files[0];
