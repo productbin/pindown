@@ -9,6 +9,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { Input } from "@material-tailwind/react";
 import { WagmiConfig, createClient, configureChains } from "wagmi";
 import { polygonMumbai } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
@@ -143,6 +144,7 @@ export default function Upload() {
     for (let i in data) {
       var theOne = data[i][0];
       theData.push(theOne);
+      setThelist((prevData) => [...prevData, data]);
     }
     console.log(theData);
     setDisplayWallets(true);
@@ -184,143 +186,145 @@ export default function Upload() {
   return (
     <WagmiConfig client={client}>
       <div className="rounded-lg p-5 w-full text-white">
+        <div className="sm:flex sm:justify-center  "></div>
         <div className="rounded-lg bg-white bg-opacity-5 justify-evenly">
-          <div className="sm:flex sm:justify-center  ">
-            <div>
+          <div className="flex justify-around">
+            <div className="flex-col justify-center">
+              <div className="flex justify-center">
+                <h1 className="text-2xl m-2 hover:underline-offset-1 font-medium">
+                  {" "}
+                  CERTIFICATE DETAILS
+                </h1>
+              </div>
               <div className="flex flex-col items-center  space-y-12  m-5 items-end gap-6">
-                <div className="relative flex m-5 h-10 w-full m-5 min-w-[24rem] max-w-[24rem]">
-                  <input
-                    id="name"
-                    className="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-2 border-l-2 border-r-2 bg-transparent px-3 py-2.5 pr-20 font-sans text-sm font-normal text-blue-gray-700 outline-none transition-all placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-pink-500 focus:border-t-transparent focus:outline-none disabled:border-0 disabled:bg-blue-gray-50"
-                    placeholder=" "
-                  />
-                  <label
-                    htmlFor="name"
-                    className="before:content[' '] after:content[' '] pointer-events-none absolute left-3 top-0 -translate-y-1/2 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-pink-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-pink-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
-                  >
-                    Name Your NFT
+                <div className="mb-4">
+                  <label className="block text-white text-sm font-bold mb-2">
+                    Name
                   </label>
-                </div>
-                <div className="relative flex m-5 h-10 w-full m-5 min-w-[24rem] max-w-[24rem]">
                   <input
-                    id="attribute"
-                    className="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-2 border-l-2 border-r-2 bg-transparent px-3 py-2.5 pr-20 font-sans text-sm font-normal text-blue-gray-700 outline-none transition-all placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-pink-500 focus:border-t-transparent focus:outline-none disabled:border-0 disabled:bg-blue-gray-50"
-                    placeholder=" "
+                    className="shadow bg-transparent border rounded-lg  w-96 py-2 px-3 text-white focus:text-pink-500 leading-tight focus:outline-none focus:border-pink-500 focus:shadow-outline"
+                    id="name"
+                    type="text"
+                    placeholder="Name"
                   />
-                  <label
-                    htmlFor="Attributes"
-                    className="before:content[' '] after:content[' '] pointer-events-none absolute left-3 top-0 -translate-y-1/2 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-pink-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-pink-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
-                  >
+                </div>
+                <div className="mb-4">
+                  <label className="block text-white text-sm font-bold mb-2">
                     Attributes
                   </label>
-                </div>
-                <div className="relative flex m-5 h-10 w-full m-5 min-w-[24rem] max-w-[24rem]">
                   <input
-                    id="desc"
-                    className="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-2 border-l-2 border-r-2 bg-transparent px-3 py-2.5 pr-20 font-sans text-sm font-normal text-blue-gray-700 outline-none transition-all placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-pink-500 focus:border-t-transparent focus:outline-none disabled:border-0 disabled:bg-blue-gray-50"
-                    placeholder=" "
+                    className="shadow bg-transparent border rounded-lg  w-96 py-2 px-3 text-white focus:text-pink-500 leading-tight focus:outline-none focus:border-pink-500 focus:shadow-outline"
+                    id="attribute"
+                    type="text"
+                    placeholder="Attributes"
                   />
-                  <label
-                    htmlFor="description"
-                    className="before:content[' '] after:content[' '] pointer-events-none absolute left-3 top-0 -translate-y-1/2 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-pink-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-pink-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
-                  >
+                </div>
+                <div className="mb-6">
+                  <label className="block text-white text-sm font-bold mb-2">
                     Description
                   </label>
+                  <input
+                    placeholder="Enter description....."
+                    type="text"
+                    id="desc"
+                    className="shadow bg-transparent border rounded-lg  w-96 py-2 px-3 text-white focus:text-pink-500 leading-tight focus:outline-none focus:border-pink-500 focus:shadow-outline"
+                  />
                 </div>
-                <div className="items-center  flex-col">
-                  <div>
-                    {(displayWallets || displayMonoWallets) && (
-                      <ArrayShow array={thelist} />
-                    )}
-                  </div>
+                <div className="mb-6">
+                  <label className="block text-white text-sm font-bold mb-2">
+                    Upload Photo
+                  </label>
+                  <input
+                    id="imgurl"
+                    type="file"
+                    className="shadow bg-transparent border rounded-lg  w-96 py-2 px-3 text-white focus:text-pink-500 leading-tight focus:outline-none focus:border-pink-500 focus:shadow-outline"
+                    required
+                    onChange={handleImageSelect}
+                  />
                 </div>
-                <div className="flex  items-center m-0">
-                  <div className="relative flex h-10 m-5 w-full m-5 min-w-[24rem] max-w-[24rem]">
-                    <label
-                      htmlFor="csvfile"
-                      className="relative inline-block px-4 py-2 h-full w-full text-sm font-medium leading-5 text-white border rounded-[7px] cursor-pointer bg-transparent hover:border-pink-500 hover:text-pink-500"
-                    >
-                      <div className="flex justify-between">
-                        <span className="">Choose CSV File</span>
-                        <input
-                          id="csvfile"
-                          type="file"
-                          accept=".csv"
-                          onChange={parsecsv}
-                          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                          placeholder=""
-                          required
-                        />
-                        <button
-                          onMouseEnter={() => setIsButtonHovered(true)}
-                          onMouseLeave={() => setIsButtonHovered(false)}
-                          className="relative"
-                        >
-                          <div>
-                            <FontAwesomeIcon
-                              icon={faInfoCircle}
-                              style={{ color: "white" }}
-                            />
-                          </div>
-                          {isButtonHovered && (
-                            <img
-                              className="absolute top-[-25rem] left-1/2 min-w-[500px] h-[500px] rounded-full object-cover transition-transform transform hover:scale-125"
-                              src="walletI.png"
-                              alt="Image"
-                            />
-                          )}
-                        </button>
-                      </div>
-                    </label>
+
+                <div className="items-center  w-64 m-0 flex-col">
+                  <div id="imagePreview"></div>
+                </div>
+              </div>
+            </div>
+            <div className="flex-col justify-center">
+              <div className="flex justify-center">
+                <h1 className="text-2xl m-2 hover:underline-offset-1 font-medium ">
+                  TARGET WALLETS
+                </h1>
+              </div>
+
+              <div className="relative m-5 flex h-10 m-5 w-full m-5 min-w-[24rem] max-w-[24rem]">
+                <label className="relative inline-block px-4 py-2 h-full w-full text-sm font-medium leading-5 text-white border rounded-lg cursor-pointer bg-transparent hover:border-pink-500 hover:text-pink-500">
+                  <div className="flex justify-between">
+                    <span className="">Choose CSV File</span>
+                    <input
+                      id="csvfile"
+                      type="file"
+                      accept=".csv"
+                      onChange={parsecsv}
+                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                      required
+                    />
                   </div>
-                  <div className="items-center m-5 font-bold text-3xl">
-                    {"OR"}
-                  </div>
-                  <div className="relative flex m-5 h-10 w-full m-5 min-w-[24rem] max-w-[24rem]">
+                </label>
+              </div>
+              <div className="items-center flex justify-center m-5 font-bold text-3xl">
+                {"OR"}
+              </div>
+              <div className="flex justify-center   h-10 w-full  min-w-[24rem] max-w-[24rem]">
+                <div>
+                  <label className="block text-white text-sm font-bold mb-2">
+                    Insert Wallet Address{" "}
+                  </label>
+                  <div className="flex w-96">
                     <input
                       id="monoWalletAddress"
-                      className="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-2 border-l-2 border-r-2 bg-transparent px-3 py-2.5 pr-20 font-sans text-sm font-normal text-blue-gray-700 outline-none transition-all placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-pink-500 focus:border-t-transparent focus:outline-none disabled:border-0 disabled:bg-blue-gray-50"
+                      className="shadow bg-transparent border rounded-l-lg  w-full py-2 px-3 text-white focus:text-pink-500 leading-tight focus:outline-none focus:border-pink-500 focus:shadow-outline"
                       placeholder=" "
                     />
                     <button
                       onClick={monoInput}
-                      className="!absolute right-1 top-1 z-10 select-none rounded bg-pink-500 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none peer-placeholder-shown:pointer-events-none peer-placeholder-shown:bg-blue-gray-500 peer-placeholder-shown:opacity-50 peer-placeholder-shown:shadow-none"
+                      className="rounded-r-lg bg-pink-500 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none peer-placeholder-shown:pointer-events-none peer-placeholder-shown:bg-blue-gray-500 peer-placeholder-shown:opacity-50 peer-placeholder-shown:shadow-none"
                       data-ripple-light="false"
                     >
                       ADD
                     </button>
-
-                    <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-3 top-0 -translate-y-1/2 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-pink-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-pink-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-                      Insert Wallet Address{" "}
-                    </label>
                   </div>
                 </div>
-                <div className="items-center  w-64 m-0 flex-col">
-                  <div id="imagePreview"></div>
+              </div>
+              <div className="items-center   flex-col">
+                <div className="m-16">
+                  {(displayWallets || displayMonoWallets) && (
+                    <ArrayShow array={thelist} onChange={parsecsv} />
+                  )}
                 </div>
-                <div className="relative  flex  h-10 m-5 w-full m-5 min-w-[24rem] max-w-[24rem]">
-                  <input
-                    id="imgurl"
-                    type="file"
-                    className="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 pr-20 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-                    placeholder=" "
-                    required
-                    onChange={handleImageSelect}
-                  />
-                  <button
-                    onClick={Everything}
-                    className="!absolute right-1 top-1 z-10 select-none rounded bg-pink-500 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none peer-placeholder-shown:pointer-events-none peer-placeholder-shown:bg-blue-gray-500 peer-placeholder-shown:opacity-50 peer-placeholder-shown:shadow-none"
-                    data-ripple-light="false"
-                  >
-                    {uploading ? "SENDING" : "SEND"}
-                  </button>
-                  <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-pink-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-pink-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-                    Upload Photo
-                  </label>
-                </div>{" "}
-                <Mint />
               </div>
             </div>
+          </div>
+          <div className="flex-col justify-center">
+            <div>
+              <div className="flex justify-center m-5">
+                <button
+                  className="relative inline-block text-lg group w-full sm:w-auto sm:text-sm"
+                  onClick={Everything}
+                >
+                  <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
+                    <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
+                    <span className="absolute left-0 w-64 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 hover:from-purple-600 hover:to-pink-600 ease bg-gradient-to-br from-purple-500 to-pink-500 group-hover:-rotate-180 ease"></span>
+                    <span className="relative text-lg">1.SEND</span>
+                  </span>
+                  <span
+                    className="absolute bottom-0 right-0 w-full h-full -mb-1 -mr-1 transition-all duration-200 ease-linear hover:from-purple-600 hover:to-pink-600 ease bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg group-hover:mb-0 group-hover:mr-0"
+                    data-rounded="rounded-lg"
+                  ></span>
+                </button>
+              </div>
+            </div>
+            <div>
+              <Mint />
+            </div>{" "}
           </div>
         </div>
       </div>
