@@ -17,7 +17,7 @@ const ArrayShow = ({ array }) => {
 
   return (
     <div>
-      <div className="text-white text-center m-5 font-bold text-4xl hover:bg-gradient-to-r from-purple-600 to-pink-600 hover:text-transparent hover:bg-clip-text">
+      <div className="text-white text-center m-5 font-bold text-3xl hover:bg-gradient-to-r from-purple-600 to-pink-600 hover:text-transparent hover:bg-clip-text">
         WALLET ADDRESSES
       </div>
 
@@ -26,10 +26,10 @@ const ArrayShow = ({ array }) => {
           {items.map((item, index) => (
             <li
               key={index}
-              className="flex flex-wrap justify-center rounded-lg py-2 px-4 mb-2"
+              className="flex flex-wrap justify-center rounded-lg  px-4 mb-2"
             >
               {index + 1 + ". " + item}
-              <button onClick={() => handleDelete(index)} className="ml-2">
+              <button onClick={() => handleDelete(index)} className="">
                 <FontAwesomeIcon icon={faTrash} style={{ color: "#ff0000" }} />
               </button>
             </li>

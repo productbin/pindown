@@ -376,7 +376,7 @@ export default function Upload() {
                 </div>
               </div>
               <div className="items-center   flex-col">
-                <div className="m-16">
+                <div className="flex w-96 justify-center m-5">
                   {(displayWallets || displayMonoWallets) && (
                     <ArrayShow array={thelist} onChange={parsecsv} />
                   )}
