@@ -6,34 +6,26 @@ import { File } from "web3.storage";
 import Papa from "papaparse";
 import { useEffect, useRef, useState } from "react";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faInfoCircle,
+  faTrash,
+  faCirclePlus,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Input } from "@material-tailwind/react";
 import { WagmiConfig, createClient, configureChains } from "wagmi";
 import { polygonMumbai } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { useContractWrite } from "wagmi";
-import multer from "multer";
 import abiData from "./abi.json";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faInfoCircle);
 // Global Vaiables
-//Multer Stuff
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public");
-  },
-  filename: function (req, file, cb) {
-    cb(null, new Date().toISOString() + "-" + file.originalname);
-  },
-});
-const upload = multer({ storage: storage });
 
 var ipfsURL;
+var jsonList = [];
 var theData = [];
 var theImageUrl;
 const { chains, provider, webSocketProvider } = configureChains(
@@ -104,41 +96,11 @@ export default function Upload() {
     document.getElementById("monoWalletAddress").value = ""; // Set the value to an empty string
   };
 
-  async function handleMulter(req, res, next) {
-    try {
-      await upload.single("imgurl")(req, res, async function (err) {
-        if (err) {
-          console.error("Error uploading image:", err);
-          return next(err);
-        }
-        if (!req.file) {
-          console.error("No file selected");
-          return next(new Error("No file selected"));
-        }
-
-        const file = req.file;
-
-        // Set the image URL to be used in the frontend
-        theImageUrl = "/img/" + file.filename;
-        setUploading(true);
-        await imageStorage(); // Assuming imageStorage is an asynchronous function
-        await getdata(); // Assuming getdata is an asynchronous function
-
-        // Continue with other logic or function calls
-        // ...
-      });
-    } catch (error) {
-      console.error(error);
-      next(error);
-    } finally {
-      setUploading(false);
-    }
-  }
   async function handleAllFunctions() {
     try {
       setUploading(true);
-      await imageStorage(); // Assuming imageStorage is an asynchronous function
-      await getdata(); // Assuming getdata is an asynchronous function
+      await imageStorage();
+      await getdata();
     } catch (error) {
       // Handle any errors that occurred during the asynchronous tasks
       console.error(error);
@@ -167,7 +129,55 @@ export default function Upload() {
 
     reader.readAsDataURL(file);
   }
+  //Function take the lis and Display it in the Frontend
+  function handleAttributesDisplay() {
+    try {
+      const divElement = document.getElementById("attribute");
+      const pElements = divElement.querySelectorAll("p");
+      pElements.forEach((element) => element.remove());
+      jsonList.forEach(function (jsonObj) {
+        // Create a <p> element
+        var values = Object.values(jsonObj);
+        console.log(values);
+        var pElement = document.createElement("p");
+        // Convert the JSON object to a string and assign it as the text content of the <p> element
+        // Append the <p> element to the div
+        var reqData = values[0] + ":" + values[1];
+        pElement.textContent = JSON.stringify(reqData);
+        console.log("tryblock");
 
+        jsonListDiv.appendChild(pElement);
+      });
+    } catch (err) {
+      console.log("catchblock");
+      var jsonListDiv = document.getElementById("attribute");
+      jsonList.forEach(function (jsonObj) {
+        // Create a <p> element
+        var values = Object.values(jsonObj);
+        console.log(values);
+        var pElement = document.createElement("p");
+        // Convert the JSON object to a string and assign it as the text content of the <p> element
+        // Append the <p> element to the div
+        var reqData = values[0] + ":" + values[1];
+        pElement.textContent = JSON.stringify(reqData);
+
+        jsonListDiv.appendChild(pElement);
+      });
+    }
+  }
+  //Funciton for adding Attributes
+  function handleAttributesInput() {
+    let key = prompt("Enter You Key", "");
+    let value = prompt("Enter Your Value", "");
+    // for Making the input into an array
+    var keyValuePair = {
+      trait_type: key,
+      value: value,
+    };
+    jsonList.push(keyValuePair);
+    console.log(jsonList);
+    handleAttributesDisplay();
+  }
   async function imageStorage() {
     const fileInput = document.getElementById("imgurl");
     const file = fileInput.files[0];
@@ -221,12 +231,11 @@ export default function Upload() {
   function getdata() {
     const Name = document.getElementById("name").value;
     const Description = document.getElementById("desc").value;
-    const Attributes = document.getElementById("attribute").value;
     let inputData = {
       description: Description,
       image: theImageUrl,
       name: Name,
-      attributes: Attributes,
+      attributes: jsonList,
     };
     const blob = new Blob([JSON.stringify(inputData)], {
       type: "application/json",
@@ -261,14 +270,21 @@ export default function Upload() {
                 </div>
                 <div className="mb-4">
                   <label className="block text-white text-sm font-bold mb-2">
-                    Attributes
+                    Attributes{" "}
                   </label>
-                  <input
-                    className="shadow bg-transparent border rounded-lg  w-96 py-2 px-3 text-white focus:text-pink-500 leading-tight focus:outline-none focus:border-pink-500 focus:shadow-outline"
-                    id="attribute"
-                    type="text"
-                    placeholder="Attributes"
-                  />
+                  <div className="flex w-96">
+                    <div
+                      id="attribute"
+                      className="shadow max-h-16  overflow-y-auto bg-transparent border rounded-l-lg  w-full py-2 px-3 text-white focus:text-pink-500 leading-tight focus:outline-none focus:border-pink-500 focus:shadow-outline"
+                    />
+                    <button
+                      onClick={handleAttributesInput}
+                      className="rounded-r-lg bg-pink-500 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none peer-placeholder-shown:pointer-events-none peer-placeholder-shown:bg-blue-gray-500 peer-placeholder-shown:opacity-50 peer-placeholder-shown:shadow-none"
+                      data-ripple-light="false"
+                    >
+                      ADD
+                    </button>
+                  </div>
                 </div>
                 <div className="w-96">
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -378,7 +394,7 @@ export default function Upload() {
                   <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
                     <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
                     <span className="absolute left-0 w-64 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 hover:from-purple-600 hover:to-pink-600 ease bg-gradient-to-br from-purple-500 to-pink-500 group-hover:-rotate-180 ease"></span>
-                    <span className="relative text-lg"> SEND </span>
+                    <span className="relative text-lg"> Upload Data </span>
                   </span>
                   <span
                     className="absolute bottom-0 right-0 w-full h-full -mb-1 -mr-1 transition-all duration-200 ease-linear hover:from-purple-600 hover:to-pink-600 ease bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg group-hover:mb-0 group-hover:mr-0"
