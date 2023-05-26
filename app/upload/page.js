@@ -102,11 +102,9 @@ export default function Upload() {
     try {
       const divElement = document.getElementById("displayWallet");
       divElement.innerHTML = "";
-
       theData.forEach((item, index) => {
         const listItem = document.createElement("div");
-        listItem.classList.add("list-item");
-
+        listItem.classList.add("flex", "justify-center", "space-x-2");
         const textElement = document.createElement("p");
         textElement.textContent = item;
 
@@ -115,7 +113,6 @@ export default function Upload() {
         deleteButton.addEventListener("click", () => {
           deleteItem(index);
         });
-
         listItem.appendChild(textElement);
         listItem.appendChild(deleteButton);
         divElement.appendChild(listItem);
@@ -391,7 +388,7 @@ export default function Upload() {
                   <label className="block text-white text-sm font-bold mb-2">
                     Insert Wallet Address{" "}
                   </label>
-                  <div className="flex w-96">
+                  <div className="flex w-96 mb-8">
                     <input
                       id="monoWalletAddress"
                       className="shadow bg-transparent border rounded-l-lg  w-full py-2 px-3 text-white focus:text-pink-500 leading-tight focus:outline-none focus:border-pink-500 focus:shadow-outline"
@@ -407,13 +404,14 @@ export default function Upload() {
                   </div>
                 </div>
               </div>
-              <div className="items-center m-16  flex-col">
+              <div className="items-center mt-8 flex-col">
+                <div className="text-xl flex justify-center">
+                  Wallet Addresses
+                </div>
                 <div
                   id="displayWallet"
-                  className=" max-h-60 overflow-y-auto bg-white bg-opacity-5 rounded-lg p-5 text-center"
-                >
-                  <p>Hello World</p>
-                </div>
+                  className=" flex-col w-full max-h-60 p-4 overflow-y-auto bg-white bg-opacity-5 rounded-lg  text-center justify-center"
+                ></div>
               </div>
             </div>
           </div>
