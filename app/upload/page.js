@@ -76,6 +76,7 @@ export default function Upload() {
   const [uploadedUrl, setUploadedUrl] = useState("");
   const [displayMonoWallets, setDisplayMonoWallets] = useState(false);
   const [thelist, setThelist] = useState([]);
+
   function getAccessToken() {
     return process.env.NEXT_PUBLIC_API_KEY;
   }
@@ -94,8 +95,41 @@ export default function Upload() {
     theData.push(data);
     alert(data + " Wallet Address Added");
     document.getElementById("monoWalletAddress").value = ""; // Set the value to an empty string
+    handleDisplayWallets();
   };
 
+  function handleDisplayWallets() {
+    try {
+      const divElement = document.getElementById("displayWallet");
+      divElement.innerHTML = "";
+
+      theData.forEach((item, index) => {
+        const listItem = document.createElement("div");
+        listItem.classList.add("list-item");
+
+        const textElement = document.createElement("p");
+        textElement.textContent = item;
+
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "🗑";
+        deleteButton.addEventListener("click", () => {
+          deleteItem(index);
+        });
+
+        listItem.appendChild(textElement);
+        listItem.appendChild(deleteButton);
+        divElement.appendChild(listItem);
+      });
+
+      function deleteItem(index) {
+        theData.splice(index, 1);
+        console.log(theData);
+        handleDisplayWallets();
+      }
+    } catch (error) {
+      console.log("error");
+    }
+  }
   async function handleAllFunctions() {
     try {
       setUploading(true);
@@ -144,8 +178,6 @@ export default function Upload() {
         // Append the <p> element to the div
         var reqData = values[0] + ":" + values[1];
         pElement.textContent = JSON.stringify(reqData);
-        console.log("tryblock");
-
         jsonListDiv.appendChild(pElement);
       });
     } catch (err) {
@@ -175,7 +207,6 @@ export default function Upload() {
       value: value,
     };
     jsonList.push(keyValuePair);
-    console.log(jsonList);
     handleAttributesDisplay();
   }
   async function imageStorage() {
@@ -205,9 +236,10 @@ export default function Upload() {
     for (let i in data) {
       var theOne = data[i][0];
       theData.push(theOne);
-      setThelist((prevData) => [...prevData, data]);
+      //setThelist((prevData) => [...prevData, data]);
     }
     console.log(theData);
+    handleDisplayWallets();
     setDisplayWallets(true);
   }
 
@@ -275,7 +307,7 @@ export default function Upload() {
                   <div className="flex w-96">
                     <div
                       id="attribute"
-                      className="shadow max-h-16  overflow-y-auto bg-transparent border rounded-l-lg  w-full py-2 px-3 text-white focus:text-pink-500 leading-tight focus:outline-none focus:border-pink-500 focus:shadow-outline"
+                      className="hover:border-pink-500 shadow max-h-16  overflow-y-auto bg-transparent border rounded-l-lg  w-full py-2 px-3 text-white focus:text-pink-500 leading-tight focus:outline-none focus:border-pink-500 focus:shadow-outline"
                     />
                     <button
                       onClick={handleAttributesInput}
@@ -375,11 +407,12 @@ export default function Upload() {
                   </div>
                 </div>
               </div>
-              <div className="items-center   flex-col">
-                <div className="flex w-96 justify-center m-5">
-                  {(displayWallets || displayMonoWallets) && (
-                    <ArrayShow array={thelist} onChange={parsecsv} />
-                  )}
+              <div className="items-center m-16  flex-col">
+                <div
+                  id="displayWallet"
+                  className=" max-h-60 overflow-y-auto bg-white bg-opacity-5 rounded-lg p-5 text-center"
+                >
+                  <p>Hello World</p>
                 </div>
               </div>
             </div>
@@ -394,7 +427,9 @@ export default function Upload() {
                   <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
                     <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
                     <span className="absolute left-0 w-64 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 hover:from-purple-600 hover:to-pink-600 ease bg-gradient-to-br from-purple-500 to-pink-500 group-hover:-rotate-180 ease"></span>
-                    <span className="relative text-lg"> Upload Data </span>
+                    <span className="relative text-lg">
+                      {uploading ? "Uploading" : "Upload Data"}{" "}
+                    </span>
                   </span>
                   <span
                     className="absolute bottom-0 right-0 w-full h-full -mb-1 -mr-1 transition-all duration-200 ease-linear hover:from-purple-600 hover:to-pink-600 ease bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg group-hover:mb-0 group-hover:mr-0"
