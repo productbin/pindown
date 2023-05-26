@@ -166,31 +166,80 @@ export default function Upload() {
       const divElement = document.getElementById("attribute");
       const pElements = divElement.querySelectorAll("p");
       pElements.forEach((element) => element.remove());
-      jsonList.forEach(function (jsonObj) {
-        // Create a <p> element
+      jsonList.forEach(function (jsonObj, index) {
         var values = Object.values(jsonObj);
         console.log(values);
+
+        // Create a container element for each item
+        var listItem = document.createElement("div");
+        listItem.classList.add("flex", "justify-center", "space-x-2");
+        // Create a <p> element to display the item
         var pElement = document.createElement("p");
-        // Convert the JSON object to a string and assign it as the text content of the <p> element
-        // Append the <p> element to the div
         var reqData = values[0] + ":" + values[1];
         pElement.textContent = JSON.stringify(reqData);
-        jsonListDiv.appendChild(pElement);
+
+        // Create a delete button
+        var deleteButton = document.createElement("button");
+        deleteButton.textContent = "🗑";
+        deleteButton.addEventListener("click", () => {
+          deleteItem(index);
+        });
+        function deleteItem(index) {
+          try {
+            jsonList.splice(index, 1);
+            console.log(jsonList);
+            listItem.remove();
+            handleAttributesDisplay();
+          } catch (error) {
+            console.log("error");
+          }
+        }
+
+        // Append the <p> element and delete button to the container
+        listItem.appendChild(pElement);
+        listItem.appendChild(deleteButton);
+
+        // Append the container to the div
+        jsonListDiv.appendChild(listItem);
       });
     } catch (err) {
       console.log("catchblock");
       var jsonListDiv = document.getElementById("attribute");
-      jsonList.forEach(function (jsonObj) {
-        // Create a <p> element
+      jsonList.forEach(function (jsonObj, index) {
         var values = Object.values(jsonObj);
         console.log(values);
+
+        // Create a container element for each item
+        var listItem = document.createElement("div");
+        listItem.classList.add("flex", "justify-center", "space-x-2");
+        // Create a <p> element to display the item
         var pElement = document.createElement("p");
-        // Convert the JSON object to a string and assign it as the text content of the <p> element
-        // Append the <p> element to the div
         var reqData = values[0] + ":" + values[1];
         pElement.textContent = JSON.stringify(reqData);
 
-        jsonListDiv.appendChild(pElement);
+        // Create a delete button
+        var deleteButton = document.createElement("button");
+        deleteButton.textContent = "🗑";
+        deleteButton.addEventListener("click", () => {
+          deleteItem(index);
+        });
+        function deleteItem(index) {
+          try {
+            jsonList.splice(index, 1);
+            console.log(jsonList);
+            listItem.remove();
+            handleAttributesDisplay();
+          } catch (error) {
+            console.log("error");
+          }
+        }
+
+        // Append the <p> element and delete button to the container
+        listItem.appendChild(pElement);
+        listItem.appendChild(deleteButton);
+
+        // Append the container to the div
+        jsonListDiv.appendChild(listItem);
       });
     }
   }
