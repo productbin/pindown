@@ -377,8 +377,8 @@ export default function Upload() {
                   </div>
                 </label>
               </div>
-              <div className="flex justify-center">
-                <img alt="csv format" src="walletI.png" />
+              <div className="flex w-96 h-96 justify-center">
+                <img alt="csv format" src="Ibg.png" />
               </div>
               <div className="items-center flex justify-center m-5 font-bold text-3xl">
                 {"OR"}
