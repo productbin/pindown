@@ -49,6 +49,9 @@ function Mint() {
     abi: abiData,
     functionName: "bulkMint",
     args: [ipfsURL, theData],
+    onSuccess(data) {
+      alert("Transaction Successful");
+    },
   };
 
   const { write } = useContractWrite(config);
