@@ -128,7 +128,7 @@ export default function Upload() {
         handleDisplayWallets();
       }
     } catch (error) {
-      console.log("error");
+      console.log(error);
     }
   }
   async function handleAllFunctions() {
@@ -166,86 +166,32 @@ export default function Upload() {
   }
   //Function take the lis and Display it in the Frontend
   function handleAttributesDisplay() {
-    try {
-      const divElement = document.getElementById("attribute");
-      const pElements = divElement.querySelectorAll("p");
-      pElements.forEach((element) => element.remove());
-      jsonList.forEach(function (jsonObj, index) {
-        var values = Object.values(jsonObj);
-        console.log(values);
+    const jsonListDiv = document.getElementById("attribute");
+    jsonListDiv.innerHTML = "";
 
-        // Create a container element for each item
-        var listItem = document.createElement("div");
-        listItem.classList.add("flex", "justify-center", "space-x-2");
-        // Create a <p> element to display the item
-        var pElement = document.createElement("p");
-        var reqData = values[0] + ":" + values[1];
-        pElement.textContent = JSON.stringify(reqData);
+    jsonList.forEach((jsonObj, index) => {
+      const values = Object.values(jsonObj);
+      const reqData = `${values[0]}:${values[1]}`;
 
-        // Create a delete button
-        var deleteButton = document.createElement("button");
-        deleteButton.textContent = "🗑";
-        deleteButton.addEventListener("click", () => {
-          deleteItem(index);
-        });
-        function deleteItem(index) {
-          try {
-            jsonList.splice(index, 1);
-            console.log(jsonList);
-            listItem.remove();
-            handleAttributesDisplay();
-          } catch (error) {
-            console.log("error");
-          }
-        }
+      const listItem = document.createElement("div");
+      listItem.classList.add("flex", "justify-center", "space-x-2");
 
-        // Append the <p> element and delete button to the container
-        listItem.appendChild(pElement);
-        listItem.appendChild(deleteButton);
+      const pElement = document.createElement("p");
+      pElement.textContent = JSON.stringify(reqData);
 
-        // Append the container to the div
-        jsonListDiv.appendChild(listItem);
-      });
-    } catch (err) {
-      console.log("catchblock");
-      var jsonListDiv = document.getElementById("attribute");
-      jsonList.forEach(function (jsonObj, index) {
-        var values = Object.values(jsonObj);
-        console.log(values);
+      const deleteButton = document.createElement("button");
+      deleteButton.textContent = "🗑";
+      deleteButton.addEventListener("click", () => deleteItem(index));
 
-        // Create a container element for each item
-        var listItem = document.createElement("div");
-        listItem.classList.add("flex", "justify-center", "space-x-2");
-        // Create a <p> element to display the item
-        var pElement = document.createElement("p");
-        var reqData = values[0] + ":" + values[1];
-        pElement.textContent = JSON.stringify(reqData);
+      function deleteItem(index) {
+        jsonList.splice(index, 1);
+        handleAttributesDisplay();
+      }
 
-        // Create a delete button
-        var deleteButton = document.createElement("button");
-        deleteButton.textContent = "🗑";
-        deleteButton.addEventListener("click", () => {
-          deleteItem(index);
-        });
-        function deleteItem(index) {
-          try {
-            jsonList.splice(index, 1);
-            console.log(jsonList);
-            listItem.remove();
-            handleAttributesDisplay();
-          } catch (error) {
-            console.log("error");
-          }
-        }
-
-        // Append the <p> element and delete button to the container
-        listItem.appendChild(pElement);
-        listItem.appendChild(deleteButton);
-
-        // Append the container to the div
-        jsonListDiv.appendChild(listItem);
-      });
-    }
+      listItem.appendChild(pElement);
+      listItem.appendChild(deleteButton);
+      jsonListDiv.appendChild(listItem);
+    });
   }
   //Funciton for adding Attributes
   function handleAttributesInput() {
