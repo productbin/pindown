@@ -302,20 +302,20 @@ export default function Upload() {
                   <div className="flex w-96">
                     <div
                       id="attribute"
-                      className="hover:border-pink-500 shadow max-h-16  overflow-y-auto bg-transparent border rounded-l-[7px]  w-full py-2 px-3 text-white focus:text-pink-500 leading-tight focus:outline-none focus:border-pink-500 focus:shadow-outline"
+                      className="hover:border-pink-500 shadow h-16 max-h-16  overflow-y-auto bg-transparent border rounded-l-[7px]  w-full py-2 px-3 text-white focus:text-pink-500 leading-tight focus:outline-none focus:border-pink-500 focus:shadow-outline"
                     />
                     <AttributeInput onButtonClick={handleAttributesInput} />
                   </div>
                 </div>
 
                 <div className="w-96">
-                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                  <label className="block mb-2 text-sm font-medium text-gray-900 ">
                     Description
                   </label>
                   <textarea
                     id="desc"
                     rows="6"
-                    className="block w-96  p-2.5 w-full text-sm text-white bg-transparent  rounded-[7px] border border-white  focus:ring-pink-500 focus:outline-none focus:border-pink-500 focus:shadow-outline"
+                    className="block  h-52  p-2.5 w-full text-sm text-white bg-transparent  rounded-[7px] border border-white  focus:ring-pink-500 focus:outline-none focus:border-pink-500 focus:shadow-outline"
                     placeholder="Write your thoughts here..."
                   ></textarea>
                 </div>
@@ -343,68 +343,69 @@ export default function Upload() {
                   </div>
                 </div>
 
-                <div className="items-center  w-64 m-0 flex-col">
-                  <div id="imagePreview"></div>
+                <div className="items-center  w-96 m-0 flex-col">
+                  <div className="w-full h-60" id="imagePreview"></div>
                 </div>
               </div>
             </div>
             <div className="flex-col justify-center">
               <div className="flex justify-center">
-                <h1 className="text-2xl m-2 hover:underline-offset-1 font-medium ">
+                <h1 className="text-2xl  mb-4 m-2  hover:underline-offset-1 font-medium ">
                   TARGET WALLETS
                 </h1>
               </div>
-
-              <div className="relative m-11 flex h-10 m-5 w-full m-5 min-w-[24rem] max-w-[24rem]">
-                <label className="relative inline-block px-4 py-2 h-full w-full text-sm font-medium leading-5 text-white border rounded-[7px] cursor-pointer bg-transparent hover:border-pink-500 hover:text-pink-500">
-                  <div className="flex justify-between">
-                    <span className="">Choose CSV File</span>
-                    <input
-                      id="csvfile"
-                      type="file"
-                      accept=".csv"
-                      onChange={parsecsv}
-                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                      required
-                    />
-                  </div>
-                </label>
-              </div>
-              <div className="flex w-96 h-96 justify-center">
-                <img alt="csv format" src="Ibg.png" />
-              </div>
-              <div className="items-center flex justify-center m-5 font-bold text-3xl">
-                {"OR"}
-              </div>
-              <div className="flex justify-center ml-5  h-10 w-full  min-w-[24rem] max-w-[24rem]">
-                <div>
-                  <label className="block text-white text-sm font-bold mb-2">
-                    Insert Wallet Address{" "}
+              <div className="m-5 mt-10 space-y-12">
+                <div className="relative m-11 flex h-10 m-5 w-full m-5 min-w-[24rem] max-w-[24rem]">
+                  <label className="relative inline-block px-4 py-2 h-full w-full text-sm font-medium leading-5 text-white border rounded-[7px] cursor-pointer bg-transparent hover:border-pink-500 hover:text-pink-500">
+                    <div className="flex justify-between">
+                      <span className="">Choose CSV File</span>
+                      <input
+                        id="csvfile"
+                        type="file"
+                        accept=".csv"
+                        onChange={parsecsv}
+                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                        required
+                      />
+                    </div>
                   </label>
-                  <div className="flex w-96 mb-8">
-                    <input
-                      id="monoWalletAddress"
-                      className="shadow bg-transparent border rounded-l-[7px]  w-full py-2 px-3 text-white focus:text-pink-500 leading-tight focus:outline-none focus:border-pink-500 focus:shadow-outline"
-                      placeholder=" "
-                    />
-                    <button
-                      onClick={monoInput}
-                      className="rounded-r-[7px] bg-pink-500 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none peer-placeholder-shown:pointer-events-none peer-placeholder-shown:bg-blue-gray-500 peer-placeholder-shown:opacity-50 peer-placeholder-shown:shadow-none"
-                      data-ripple-light="false"
-                    >
-                      ADD
-                    </button>
+                </div>
+                <div className="flex w-92 h-96 justify-center">
+                  <img alt="csv format" src="walletI.png" />
+                </div>
+                <div className="items-center flex justify-center m-5 font-bold text-3xl">
+                  {"OR"}
+                </div>
+                <div className="flex justify-center ml-5  h-10 w-full  min-w-[24rem] max-w-[24rem]">
+                  <div>
+                    <label className="block text-white text-sm font-bold mb-2">
+                      Insert Wallet Address{" "}
+                    </label>
+                    <div className="flex w-96 mb-8">
+                      <input
+                        id="monoWalletAddress"
+                        className="shadow bg-transparent border rounded-l-[7px]  w-full py-2 px-3 text-white focus:text-pink-500 leading-tight focus:outline-none focus:border-pink-500 focus:shadow-outline"
+                        placeholder=" "
+                      />
+                      <button
+                        onClick={monoInput}
+                        className="rounded-r-[7px] bg-pink-500 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none peer-placeholder-shown:pointer-events-none peer-placeholder-shown:bg-blue-gray-500 peer-placeholder-shown:opacity-50 peer-placeholder-shown:shadow-none"
+                        data-ripple-light="false"
+                      >
+                        ADD
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="items-center mt-8 flex-col">
-                <div className="text-xl flex justify-center">
-                  Wallet Addresses
+                <div className="items-center mt-8 flex-col">
+                  <div className="text-xl m-2 flex justify-center">
+                    Wallet Addresses
+                  </div>
+                  <div
+                    id="displayWallet"
+                    className=" flex-col w-full h-60  max-h-60 p-4 overflow-y-auto bg-white bg-opacity-5 rounded-[7px]  text-center justify-center"
+                  ></div>
                 </div>
-                <div
-                  id="displayWallet"
-                  className=" flex-col w-full max-h-60 p-4 overflow-y-auto bg-white bg-opacity-5 rounded-[7px]  text-center justify-center"
-                ></div>
               </div>
             </div>
           </div>
