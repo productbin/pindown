@@ -16,7 +16,8 @@ function Profile() {
   return (
     <div>
       {connectors.map((connector) => (
-        <button
+        <a
+          href="#"
           className="relative inline-block text-lg group w-full sm:w-auto sm:text-sm"
           disabled={!connector.ready}
           key={connector.id}
@@ -36,7 +37,7 @@ function Profile() {
             className="absolute bottom-0 right-0 w-full h-full -mb-1 -mr-1 transition-all duration-200 ease-linear hover:from-purple-600 hover:to-pink-600 ease bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg group-hover:mb-0 group-hover:mr-0"
             data-rounded="rounded-lg"
           ></span>
-        </button>
+        </a>
       ))}
     </div>
   );
