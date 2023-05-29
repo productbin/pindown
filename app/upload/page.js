@@ -21,6 +21,7 @@ import { publicProvider } from "wagmi/providers/public";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { useContractWrite } from "wagmi";
 import abiData from "./abi.json";
+import { isAddress } from "web3-utils";
 
 library.add(faInfoCircle);
 // Global Vaiables
@@ -96,10 +97,16 @@ export default function Upload() {
     const data = document.getElementById("monoWalletAddress").value;
     setDisplayMonoWallets(true);
     setThelist((prevData) => [...prevData, data]); // Update theData array with new value
-    theData.push(data);
-    alert(data + " Wallet Address Added");
-    document.getElementById("monoWalletAddress").value = ""; // Set the value to an empty string
-    handleDisplayWallets();
+    var isValidAddress = isAddress(data);
+    if (isValidAddress) {
+      console.log("Valid Ethereum address");
+      theData.push(data);
+      document.getElementById("monoWalletAddress").value = ""; // Set the value to an empty string
+      alert(data + " Wallet Address Added");
+      handleDisplayWallets();
+    } else {
+      alert(data + " " + "Invalid Ethereum address");
+    }
   };
 
   function handleDisplayWallets() {
@@ -230,12 +237,17 @@ export default function Upload() {
   function jsonToArray(data) {
     for (let i in data) {
       var theOne = data[i][0];
-      theData.push(theOne);
+      var isValidAddress = isAddress(theOne);
+      if (isValidAddress) {
+        theData.push(theOne);
+      } else {
+        alert(theOne + " " + "Invalid Wallet Address");
+      }
       //setThelist((prevData) => [...prevData, data]);
+      console.log(theData);
+      handleDisplayWallets();
+      setDisplayWallets(true);
     }
-    console.log(theData);
-    handleDisplayWallets();
-    setDisplayWallets(true);
   }
 
   function startPapa() {
