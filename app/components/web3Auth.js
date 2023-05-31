@@ -8,9 +8,12 @@ const Web3AuthButton = () => {
   useEffect(() => {
     const initializeWeb3Auth = async () => {
       const auth = new Web3Auth({
-        clientId: "process.env.YOUR_WEB3AUTH_CLIENT_ID", // Get your Client ID from Web3Auth Dashboard
+        clientId:
+          "BIRSE1qxpXIUihDfW6vSpuTf3rXHRFWPxcooqHsobTYh-Vix3IIO1oxFB2CZkv5kLZK60t9rpV9J0mb6_vHzvb0", // Replace with your actual Client ID from Web3Auth Dashboard
         chainConfig: {
           chainNamespace: "eip155",
+          rpcTarget:
+            "https://polygon-mumbai.g.alchemy.com/v2/TVxT2Kjzsy4pFTaoWknc3O8SwxAuUqm6",
           chainId: "0x13881", // Use 0x13881 for Mumbai Testnet
         },
       });
