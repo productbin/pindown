@@ -63,6 +63,13 @@ function Navbar() {
                     Home
                   </a>
                   <a
+                    href="#"
+                    className="text-white hover:bg-gray-700 hover:text-white hover:underline hover:underline-offset-2 hover:rounded-lg px-3 py-2 text-sm font-medium"
+                  >
+                    About
+                  </a>
+
+                  <a
                     href="/Verified-Users"
                     className="text-white hover:bg-gray-700 hover:text-white hover:underline hover:underline-offset-2 hover:rounded-lg px-3 py-2 text-sm font-medium"
                   >
