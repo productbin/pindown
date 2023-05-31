@@ -2,7 +2,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import Profile from "./Cwalllet";
-import Web3AuthButton from "./web3Auth";
+//import Web3AuthButton from "./web3Auth";
 import Certificate from "./certificate";
 import { useEffect, useState } from "react";
 import { WagmiConfig, createClient, configureChains, mainnet } from "wagmi";
@@ -70,7 +70,6 @@ function Navbar() {
                   </a>
 
                   <Certificate />
-                  <Web3AuthButton />
                 </div>
               </div>
               <div className="hidden md:block">
