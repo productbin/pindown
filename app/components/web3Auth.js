@@ -8,8 +8,7 @@ const Web3AuthButton = () => {
   useEffect(() => {
     const initializeWeb3Auth = async () => {
       const auth = new Web3Auth({
-        clientId:
-          "BIRSE1qxpXIUihDfW6vSpuTf3rXHRFWPxcooqHsobTYh-Vix3IIO1oxFB2CZkv5kLZK60t9rpV9J0mb6_vHzvb0", // Get your Client ID from Web3Auth Dashboard
+        clientId: "process.env.YOUR_WEB3AUTH_CLIENT_ID", // Get your Client ID from Web3Auth Dashboard
         chainConfig: {
           chainNamespace: "eip155",
           chainId: "0x13881", // Use 0x13881 for Mumbai Testnet
