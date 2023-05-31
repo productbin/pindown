@@ -16,6 +16,7 @@ const Web3AuthButton = () => {
             "https://polygon-mumbai.g.alchemy.com/v2/TVxT2Kjzsy4pFTaoWknc3O8SwxAuUqm6",
           chainId: "0x13881", // Use 0x13881 for Mumbai Testnet
         },
+        web3AuthNetwork: "testnet", // Adding this line fixes the issue for me!!
       });
       await auth.initModal();
       setWeb3Auth(auth);
