@@ -3,15 +3,15 @@ import "../globals.css";
 export default function Verified() {
   return (
     <div>
-      <div className="flex m-2 justify-center">
+      <div className="flex m-8 justify-center">
         <h1 className="text-white font-bold text-4xl hover:bg-gradient-to-r from-purple-600 to-pink-600 hover:text-transparent hover:bg-clip-text">
           Verified Users
         </h1>
       </div>
 
-      <div className="text-white  rounded-lg flex justify-center">
-        <div className="max-w-4xl p-2 rounded-[30px]  overflow-y-auto">
-          <table className="border-collapse rounded-lg border border-gray-800">
+      <div className="text-white mt-4  rounded-lg flex justify-center">
+        <div className="max-w-4xl p-2 rounded-[40px]  overflow-y-auto">
+          <table className="border-collapse rounded-[10px] border border-gray-800">
             {" "}
             <thead>
               <tr className="bg-gray-800">
