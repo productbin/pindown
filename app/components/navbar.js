@@ -2,6 +2,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import Profile from "./Cwalllet";
+import Web3AuthButton from "./web3Auth";
 import Certificate from "./certificate";
 import { useEffect, useState } from "react";
 import { WagmiConfig, createClient, configureChains, mainnet } from "wagmi";
@@ -62,12 +63,14 @@ function Navbar() {
                     Home
                   </a>
                   <a
-                    href="#"
+                    href="/Verified-Users"
                     className="text-white hover:bg-gray-700 hover:text-white hover:underline hover:underline-offset-2 hover:rounded-lg px-3 py-2 text-sm font-medium"
                   >
-                    About
+                    Verify
                   </a>
+
                   <Certificate />
+                  <Web3AuthButton />
                 </div>
               </div>
               <div className="hidden md:block">
