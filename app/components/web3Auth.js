@@ -16,7 +16,7 @@ const Web3AuthButton = () => {
             "https://polygon-mumbai.g.alchemy.com/v2/TVxT2Kjzsy4pFTaoWknc3O8SwxAuUqm6",
           chainId: "0x13881", // Use 0x13881 for Mumbai Testnet
         },
-        web3AuthNetwork: "testnet", // Adding this line fixes the issue for me!!
+        web3AuthNetwork: "testnet", // Mandaotry if your are uploading to vercel.
       });
       await auth.initModal();
       setWeb3Auth(auth);
@@ -30,7 +30,6 @@ const Web3AuthButton = () => {
       setIsLoading(true);
       try {
         await web3auth.connect();
-        // Additional logic or actions after connecting with Web3Auth
       } catch (error) {
         console.log("Error connecting with Web3Auth:", error);
       }

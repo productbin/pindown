@@ -22,6 +22,7 @@ import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { useContractWrite } from "wagmi";
 import abiData from "./abi.json";
 import { isAddress } from "web3-utils";
+import Web3AuthConnectorInstance from "../components/web3config";
 
 library.add(faInfoCircle);
 // Global Vaiables
@@ -40,7 +41,10 @@ const { chains, provider, webSocketProvider } = configureChains(
 
 const client = createClient({
   autoConnect: true,
-  connectors: [new MetaMaskConnector({ chains })],
+  connectors: [
+    new MetaMaskConnector({ chains }),
+    Web3AuthConnectorInstance(chains),
+  ],
   provider,
   webSocketProvider,
 });
