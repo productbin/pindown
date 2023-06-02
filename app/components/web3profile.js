@@ -23,14 +23,13 @@ export default function Web3AuthProfile() {
         {connectors.map((connector) => (
           <button
             className="card"
-            disabled={!connector.ready}
-            key={connector.id}
+            disabled={!connector?.ready}
+            key={connector?.id} // Use optional chaining to access id property
             onClick={() => connect({ connector })}
           >
-            {connector.name}
-            {!connector.ready && " (unsupported)"}
+            {connector?.name} {!connector?.ready && " (unsupported)"}
             {isLoading &&
-              connector.id === pendingConnector?.id &&
+              connector?.id === pendingConnector?.id && // Use optional chaining to access id property
               " (connecting)"}
           </button>
         ))}
