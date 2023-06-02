@@ -23,7 +23,7 @@ import { useContractWrite } from "wagmi";
 import abiData from "./abi.json";
 import { isAddress } from "web3-utils";
 import Web3AuthConnectorInstance from "../components/web3config";
-
+import { useAccount, useConnect, useDisconnect } from "wagmi";
 library.add(faInfoCircle);
 // Global Vaiables
 
@@ -42,12 +42,50 @@ const { chains, provider, webSocketProvider } = configureChains(
 const client = createClient({
   autoConnect: true,
   connectors: [
-    new MetaMaskConnector({ chains }),
+    //new MetaMaskConnector({ chains }),
     Web3AuthConnectorInstance(chains),
   ],
   provider,
   webSocketProvider,
 });
+function Profile1() {
+  const { address, connector, isConnected } = useAccount();
+  const { connect, connectors, error, isLoading, pendingConnector } =
+    useConnect();
+  const { disconnect } = useDisconnect();
+
+  if (isConnected) {
+    return (
+      <div className="main">
+        <div className="title">Connected to {connector?.name}</div>
+        <div>{address}</div>
+        <button className="card" onClick={disconnect}>
+          Disconnect
+        </button>
+      </div>
+    );
+  } else {
+    return (
+      <div className="main">
+        {connectors.map((connector) => (
+          <button
+            className="card"
+            disabled={!connector.ready}
+            key={connector.id}
+            onClick={() => connect({ connector })}
+          >
+            {connector.name}
+            {!connector.ready && " (unsupported)"}
+            {isLoading &&
+              connector.id === pendingConnector?.id &&
+              " (connecting)"}
+          </button>
+        ))}
+        {error && <div>{error.message}</div>}
+      </div>
+    );
+  }
+}
 
 function Mint() {
   const config = {
@@ -57,6 +95,9 @@ function Mint() {
     args: [ipfsURL, theData],
     onSuccess(data) {
       alert("Transaction Successful");
+    },
+    isError(data) {
+      console.log("Problems");
     },
   };
 
@@ -447,6 +488,7 @@ export default function Upload() {
               </div>
             </div>
             <div>
+              <Profile1 />
               <Mint />
             </div>{" "}
           </div>
