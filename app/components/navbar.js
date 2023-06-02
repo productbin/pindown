@@ -1,8 +1,7 @@
 "use client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import Profile from "./Cwalllet";
-import Web3AuthButton from "./web3Auth";
+//import Profile from "./Cwalllet";
 import Certificate from "./certificate";
 import { useEffect, useState } from "react";
 import { WagmiConfig, createClient, configureChains, mainnet } from "wagmi";
@@ -10,6 +9,8 @@ import { polygonMumbai } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
+import Web3AuthProfile from "./web3profile";
+import Web3AuthConnectorInstance from "../components/web3config";
 
 const { chains, provider, webSocketProvider } = configureChains(
   [polygonMumbai],
@@ -18,9 +19,13 @@ const { chains, provider, webSocketProvider } = configureChains(
     publicProvider(),
   ]
 );
+
 const client = createClient({
   autoConnect: true,
-  connectors: [new MetaMaskConnector({ chains })],
+  connectors: [
+    //new MetaMaskConnector({ chains }),
+    Web3AuthConnectorInstance(chains),
+  ],
   provider,
   webSocketProvider,
 });
@@ -77,11 +82,10 @@ function Navbar() {
                   </a>
 
                   <Certificate />
-                  <Web3AuthButton />
                 </div>
               </div>
-              <div className="hidden md:block">
-                <Profile />
+              <div className="hidden text-white  md:block">
+                <Web3AuthProfile />
               </div>
             </div>
           </div>
@@ -100,7 +104,7 @@ function Navbar() {
                 >
                   About
                 </a>
-                <Profile />
+                <Web3AuthProfile />
               </div>
             </div>
           )}

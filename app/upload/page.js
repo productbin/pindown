@@ -24,6 +24,8 @@ import abiData from "./abi.json";
 import { isAddress } from "web3-utils";
 import Web3AuthConnectorInstance from "../components/web3config";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
+import Web3AuthProfile from "../components/web3profile";
+
 library.add(faInfoCircle);
 // Global Vaiables
 
@@ -48,45 +50,6 @@ const client = createClient({
   provider,
   webSocketProvider,
 });
-function Profile1() {
-  const { address, connector, isConnected } = useAccount();
-  const { connect, connectors, error, isLoading, pendingConnector } =
-    useConnect();
-  const { disconnect } = useDisconnect();
-
-  if (isConnected) {
-    return (
-      <div className="main">
-        <div className="title">Connected to {connector?.name}</div>
-        <div>{address}</div>
-        <button className="card" onClick={disconnect}>
-          Disconnect
-        </button>
-      </div>
-    );
-  } else {
-    return (
-      <div className="main">
-        {connectors.map((connector) => (
-          <button
-            className="card"
-            disabled={!connector.ready}
-            key={connector.id}
-            onClick={() => connect({ connector })}
-          >
-            {connector.name}
-            {!connector.ready && " (unsupported)"}
-            {isLoading &&
-              connector.id === pendingConnector?.id &&
-              " (connecting)"}
-          </button>
-        ))}
-        {error && <div>{error.message}</div>}
-      </div>
-    );
-  }
-}
-
 function Mint() {
   const config = {
     address: "0x41E405438dF59D438D62385e762B7e4B54AE2517",
@@ -488,7 +451,6 @@ export default function Upload() {
               </div>
             </div>
             <div>
-              <Profile1 />
               <Mint />
             </div>{" "}
           </div>
