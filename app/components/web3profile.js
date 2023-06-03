@@ -1,4 +1,4 @@
-import Web3AuthConnectorInstance from "../components/web3config";
+import React from "react";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
 
 export default function Web3AuthProfile() {
@@ -24,12 +24,12 @@ export default function Web3AuthProfile() {
           <button
             className="card"
             disabled={!connector?.ready}
-            key={connector?.id} // Use optional chaining to access id property
+            key={connector?.id}
             onClick={() => connect({ connector })}
           >
             {connector?.name} {!connector?.ready && " (unsupported)"}
             {isLoading &&
-              connector?.id === pendingConnector?.id && // Use optional chaining to access id property
+              connector?.id === pendingConnector?.id &&
               " (connecting)"}
           </button>
         ))}
