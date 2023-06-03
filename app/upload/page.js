@@ -124,7 +124,10 @@ export default function Upload() {
       // Handle any errors that occurred during the asynchronous tasks
       console.error(error);
     } finally {
-      setUploading(false);
+      // Check if both imageStorage and getdata have completed before setting uploading to false
+      if (uploading) {
+        setUploading(false);
+      }
     }
   }
   function handleImageSelect() {
@@ -244,7 +247,7 @@ export default function Upload() {
     startPapa();
   }
 
-  function getdata() {
+  async function getdata() {
     const Name = document.getElementById("name").value;
     const Description = document.getElementById("desc").value;
     let inputData = {
@@ -257,7 +260,7 @@ export default function Upload() {
       type: "application/json",
     });
     const outputData = [new File([blob], "hello.json")];
-    webstorage(outputData);
+    await webstorage(outputData);
   }
   return (
     <WagmiConfig client={client}>
@@ -400,28 +403,8 @@ export default function Upload() {
           </div>
           <div className="flex-col justify-center">
             <div>
-              <div className="flex justify-center m-5">
-                <button
-                  className="relative inline-block text-lg group w-full sm:w-48 sm:text-sm"
-                  onClick={handleAllFunctions}
-                >
-                  <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
-                    <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg  bg-gray-50"></span>
-                    <span className="absolute left-0 w-64 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 hover:from-purple-600 hover:to-pink-600 ease bg-gradient-to-br from-purple-500 to-pink-500 group-hover:-rotate-180 ease"></span>
-                    <span className="relative text-lg">
-                      {uploading ? "Uploading" : "Upload Data"}{" "}
-                    </span>
-                  </span>
-                  <span
-                    className="absolute bottom-0 right-0 w-full h-full -mb-1 -mr-1 transition-all duration-200 ease-linear hover:from-purple-600 hover:to-pink-600 ease bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg group-hover:mb-0 group-hover:mr-0"
-                    data-rounded="rounded-lg"
-                  ></span>
-                </button>
-              </div>
+              <Mint onButtonClick={handleAllFunctions} />
             </div>
-            <div>
-              <Mint />
-            </div>{" "}
           </div>
         </div>
       </div>
