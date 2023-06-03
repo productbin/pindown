@@ -1,10 +1,8 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
-  target: 'experimental-serverless-trace',
+const nextConfig = {
   experimental: {
     appDir: true,
   },
 };
-
 
 module.exports = nextConfig;
